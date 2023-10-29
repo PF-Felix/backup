@@ -62,7 +62,7 @@ GET /gpf/_search
 ```
 
 上面是在 Kibana 使用的语法，在 Postman 同样可以测试，如下图
-![image-20230411233509733](D:\ImageA\image-20230411233509733.png)
+![image-20230411233509733](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230411233509733.png)
 
 ## 🥈乐观锁并发控制策略
 
@@ -316,10 +316,10 @@ POST /teacher/_bulk
 
 查询例子：
 
-| <img src="D:\ImageA\image-20231020153621500.png" alt="image-20231020153621500" style="zoom:45%;" /> | <img src="D:\ImageA\image-20231020153654779.png" alt="image-20231020153654779" style="zoom:45%;" /> | <img src="D:\ImageA\image-20231020153718179.png" alt="image-20231020153718179" style="zoom:45%;" /> |
+| <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020153621500.png" alt="image-20231020153621500" style="zoom:45%;" /> | <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020153654779.png" alt="image-20231020153654779" style="zoom:45%;" /> | <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020153718179.png" alt="image-20231020153718179" style="zoom:45%;" /> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
-| <img src="D:\ImageA\image-20231020153738749.png" alt="image-20231020153738749" style="zoom:45%;" /> | <img src="D:\ImageA\image-20231020154012976.png" alt="image-20231020154012976" style="zoom:38%;" /> |
+| <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020153738749.png" alt="image-20231020153738749" style="zoom:45%;" /> | <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020154012976.png" alt="image-20231020154012976" style="zoom:38%;" /> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 上面图片和下面代码内容一样。
@@ -996,7 +996,7 @@ ES 对索引的每个字段都做了倒排索引
 倒排索引通过分词策略，形成了词项和文章的映射关系表
 
 倒排索引包括词项字典（Term Dictionary）和倒排列表（Posting List）
-![image-20230412145602950](D:\ImageA\image-20230412145602950.png)
+![image-20230412145602950](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230412145602950.png)
 
 词项字典：词项的集合，存储在 tim 文件中
 词项：一段文本经过分析器分析之后得到一个个词项，每个词项指向一个倒排列表
@@ -1121,7 +1121,7 @@ GET twitter/_search
 
 ### 选举过程
 
-<img src="D:\ImageA\image-20231020161529086.png" alt="image-20231020161529086" style="zoom: 38%;" />
+<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231020161529086.png" alt="image-20231020161529086" style="zoom: 38%;" />
 
 法定票数：当选 Master 所需的最小票数，是可配置的，通常情况下为有效投票节点数过半
 
@@ -1152,7 +1152,7 @@ PS：集群通常应该有奇数个候选节点；如果是偶数的话，平分
 - 可以设置为 all 或任何正整数，最大值为索引分片总数，如果设置为 2，就只需要一个副本分片写入成功即可；如果副本写入不成功，写操作必须等待并重试，超时时间是30秒
 
 **写入原理**
-![image-20230412161217017](D:\ImageA\image-20230412161217017.png)
+![image-20230412161217017](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230412161217017.png)
 
 ## 🥈读写性能调优
 
@@ -1216,13 +1216,13 @@ Mysql B+树索引并不能直接找到行，只是找到行所在的页，通过
 ## 🥈评分算法
 
 影响评分的三个维度：
-![image-20230426222026481](D:\ImageA\image-20230426222026481.png)
+![image-20230426222026481](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230426222026481.png)
 
 早期评分算法是 TF/IDF
 
 后期使用的 BM25 算法主要优化了词频对评分的影响，随着词频越来越高，对评分的影响越来越小越趋近于平缓
 
-![image-20230426221806456](D:\ImageA\image-20230426221806456.png)
+![image-20230426221806456](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230426221806456.png)
 
 ## 🥈高可用ES集群
 
@@ -1262,7 +1262,7 @@ PUT _cluster/settings
 解决方案：对机房1的节点做上面的配置，主分片将不被平均分配到三个节点，而是只分配到机房1的节点中，机房2中没有主分片存在，一个机房断电之后集群的可用率为50%
 
 参考下图理解：
-<img src="D:\ImageA\image-20230412182148065.png" alt="image-20230412182148065" style="zoom: 67%;" />
+<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230412182148065.png" alt="image-20230412182148065" style="zoom: 67%;" />
 
 ### 小规模集群
 

@@ -155,4 +155,4 @@ javadoc中的描述是：
 
 # 基本数据类型
 
-![image-20230425142940677](D:\ImageA\image-20230425142940677.png)
+![image-20230425142940677](https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20230425142940677.png)
