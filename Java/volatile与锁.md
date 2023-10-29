@@ -21,7 +21,3 @@
 <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008105906.png" style="zoom:67%;" />
 
 <img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008105918.png" style="zoom:43%;" />
-
------
-
-标签：`#并发`、`#锁`
