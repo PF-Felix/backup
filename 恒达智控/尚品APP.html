@@ -1,0 +1,1499 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+:root {
+    --monospace: "JetBrains Mono", "Fira Code", "Cascadia Code", Menlo, "Ubuntu Mono", Consolas, HYZhengYuan; /*代码字体*/
+    --text-font: var(--monospace); /*正文字体*/
+    --title-font: var(--monospace); /*标题字体*/
+    --latex-font: var(--monospace); /*LaTeX字体(不含英语)*/
+    --text-line-height: 1.6; /*正文行间距*/
+    --code-line-height: 1.6; /*代码块行间距*/
+    --p-spacing: 0.8rem; /*段间距*/
+    --text-size: 15px;
+
+    --text-color: rgba(255, 255, 255, 0.75);
+    --bg-color: rgb(26, 26, 26);
+    --control-text-color: var(--text-color);
+    --meta-content-color: var(--text-color);
+    --active-file-border-color: var(--drake-accent);
+    --rawblock-edit-panel-bd: var(--code-block-bg-color);
+    --item-hover-bg-color: #323232;
+    --active-file-bg-color: var(--item-hover-bg-color);
+    --mermaid-theme: night;
+
+    --blur-text-color: rgba(179, 190, 196, 0.5);
+    --md-char-color: #535455;
+    --side-bar-bg-color: var(--bg-color);
+    --search-select-bg-color: #ffffff;
+    --search-select-text-color: var(--bg-color);
+    --select-text-bg-color: #3473B068;
+    --window-border: 1px solid #282828;
+
+    --drake-accent: #42B883;
+    --drake-highlight: #AAC8E4;
+    --a-color: #42B883;
+    --variable-color: var(--drake-highlight);
+    --outline-active-color: var(--title-color);
+    --code-block-bg-color: #242424;
+    --code-block-color: #A6ACCD;
+    --title-color: rgba(255, 255, 255, 0.85);
+    --blockquote-border-color: transparent;
+    --blockquote-color: #EBEBEB99;
+    --blockquote-bg-color: #242424;
+    --strong-color: var(--title-color);
+    --h2-underline-color: var(--title-color);
+    --horizontal-divider-color: var(--title-color);
+    --height-light-color: var(--drake-accent);
+    --height-light-border-color: var(--drake-accent);
+    --yaml-color: #676773;
+    --yaml-bg-color: var(--code-block-bg-color);
+    --footnotes-bg-color: var(--item-hover-bg-color);
+    --footnotes-highlight: #FFD760;
+    --table-border-color: var(--item-hover-bg-color);
+    --table-header-bg-color: #242424;
+    --table-bg-color: var(--bg-color);
+    --table-n2-bg-color: var(--table-header-bg-color);
+    --input-bg-color: var(--item-hover-bg-color);
+    --btn-hover-bg-color: var(--item-hover-bg-color);
+    --checkbox-checked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M425.984 726.016l384-384-59.99-61.995-324.01 324.011-152.021-152.021L213.973 512zm384-598.016q36.01 0 61.013 25.984T896 213.974v596.01q0 34.005-25.003 59.99t-61.013 25.983h-596.01q-36.011 0-61.014-25.984t-25.003-59.989v-596.01q0-34.006 25.003-59.99T213.973 128h596.011z' fill='%2342B883'/%3E%3C/svg%3E");
+    --checkbox-unchecked: url("data:image/svg+xml,%3Csvg class='icon' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M810.667 213.333v597.334H213.333V213.333h597.334m0-85.333H213.333C166.4 128 128 166.4 128 213.333v597.334C128 857.6 166.4 896 213.333 896h597.334C857.6 896 896 857.6 896 810.667V213.333C896 166.4 857.6 128 810.667 128z' fill='%23acb7c4'/%3E%3C/svg%3E");
+
+    /*强调色*/
+    --accent-color-1: #FF9800;/*橙色*/
+    --accent-color-2: #42B883;/*青绿色*/
+    --accent-color-3: #FFCC66;/*黄色*/
+    --accent-color-4: #C792EA;/*粉紫色*/
+
+    /*链接颜色*/
+    --link-color: #569CD6;
+    /*边框颜色*/
+    --border-color-gray: #323232;/*灰色*/
+}
+
+html {
+    font-size: var(--text-size);
+}
+
+body {
+    font-family: var(--text-font) !important;
+    color: var(--text-color);
+    -webkit-font-feature-settings: "liga" on, "calt" on;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+p {
+    line-height: var(--text-line-height);
+}
+
+/*code block*/
+.md-fences {
+    font-size: 1rem;
+    padding: 0.5rem !important;
+    border-radius: 8px;
+    word-wrap: normal;
+    background-color: var(--code-block-bg-color);
+    color: var(--code-block-color);
+    border: none;
+    line-height: var(--code-line-height);
+}
+
+/*inline latex*/
+.MathJax {
+    font-size: 120% !important;
+}
+.MathJax text, .MathJax use {
+    font-family: var(--latex-font);
+}
+/*math-block latex*/
+.md-math-block .MathJax {
+    font-size: 130% !important;
+}
+
+/*mermaid*/
+[id^=mermaidChart] .cluster rect {
+    fill: var(--table-n2-bg-color) !important;
+    stroke: var(--table-border-color) !important;
+}
+[id^=mermaidChart] .clusters span.nodeLabel {
+    color: var(--text-color) !important;
+    line-height: 1.8rem;
+}
+[mermaid-type="journey"] line {
+    stroke: #7a7a7a !important;
+}
+[mermaid-type="journey"] .label {
+    color: #333 !important;
+}
+[id^=mermaidChart] .relationshipLabelBox {
+    fill: var(--bg-color) !important;
+    opacity: 1 !important;
+    background-color: var(--bg-color) !important;
+}
+[id^=mermaidChart] .legend {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] g.label {
+    font-size: 1rem !important;
+}
+[id^=mermaidChart] line.divider {
+    stroke: var(--table-border-color) !important;
+}
+[id^=mermaidChart] span.nodeLabel {
+    color: var(--code-block-color) !important;
+    line-height: 1.8rem;
+}
+tspan {
+    color: var(--text-color)
+}
+[id^=mermaidChart] .entityLabel {
+    fill: var(--code-block-color) !important;
+}
+[id^=mermaidChart] {
+    fill: var(--text-color) !important;
+}
+[id^=mermaidChart] rect.rect {
+    fill: rgba(175, 255, 212, 0.3) !important;
+}
+.md-diagram-panel-preview text.actor > tspan { /*方块文字*/
+    fill: var(--code-block-color) !important;
+    stroke: none !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .actor, .md-diagram-panel-preview .entityBox { /*方块*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .actor-line { /*竖线*/
+    stroke: var(--text-color) !important;
+    stroke-width: 1px;
+}
+.md-diagram-panel-preview .messageLine0 { /*横线*/
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageLine1 { /*虚线*/
+    stroke-width: 1.5 !important;
+    stroke-dasharray: 2, 2 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .messageText { /*描述文字*/
+    fill: var(--text-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .activation0 { /*长方形*/
+    fill: #e6e6e6 !important;
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .labelText, .md-diagram-panel-preview .labelText > tspan { /*循环标记*/
+    fill: var(--code-block-color) !important;
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+    dominant-baseline: unset;
+    alignment-baseline: unset;
+}
+.md-diagram-panel-preview .labelBox { /*循环标记背景*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+.md-diagram-panel-preview .loopLine { /*循环标记虚线*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .loopText, .md-diagram-panel-preview .loopText > tspan { /*循环名称*/
+    fill: var(--text-color) !important;
+    font-size: 1rem !important;
+}
+.md-diagram-panel-preview .sequenceNumber { /*序号*/
+    fill: var(--bg-color) !important;
+}
+pre.md-fences-advanced.md-focus .md-fences-adv-panel {
+    border: none;
+}
+.md-diagram-panel-preview .edgePath .path { /*箭头*/
+    stroke: var(--text-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel rect { /*条件文字背景*/
+    fill: var(--bg-color) !important;
+}
+.md-diagram-panel-preview .edgeLabel span { /*条件文字*/
+    color: var(--text-color) !important;
+    background: var(--bg-color) !important;
+}
+.md-diagram-panel-preview .node rect,
+.md-diagram-panel-preview .node circle,
+.md-diagram-panel-preview .node ellipse,
+.md-diagram-panel-preview .node polygon,
+.md-diagram-panel-preview .node path { /*形状*/
+    stroke: var(--table-border-color) !important;
+    fill: var(--code-block-bg-color) !important;
+}
+#write .md-diagram-panel .md-diagram-panel-preview div { /*形状内文字*/
+    color: var(--code-block-color);
+    font-family: var(--text-font) !important;
+    font-size: 1rem !important;
+}
+
+/*variable*/
+var {
+    color: var(--variable-color);
+    font-weight: bold;
+}
+
+/*raw block*/
+.md-rawblock-control:not(.md-rawblock-tooltip) {
+    border-radius: 2px 0 2px 2px;
+    padding: 0.2rem !important;
+}
+.md-rawblock:hover > .md-rawblock-container {
+    background: none;
+}
+.md-rawblock-input {
+    font-size: 1rem;
+}
+.md-rawblock-tooltip-btn:hover {
+    background: none;
+}
+.md-rawblock:hover > .md-rawblock-tooltip {
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 2px !important;
+}
+.md-rawblock-tooltip.md-rawblock-control {
+    border-radius: 2px 2px 0 0;
+    color: var(--code-block-color);
+}
+.md-rawblock-tooltip-name {
+    color: var(--code-block-color);
+    opacity: 1;
+}
+
+#write blockquote strong {
+    color: var(--blockquote-color);
+}
+
+/*link*/
+#write a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+[md-inline=link] a {
+    margin: 0 .2rem;
+}
+a:any-link {
+    color: var(--link-color);
+}
+
+img {
+    vertical-align: baseline;
+    border: 3px solid var(--border-color-gray);/*图片加边框*/
+}
+
+#write {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+#typora-source .CodeMirror-lines {
+    max-width: 1200px;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--title-font);
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+    color: var(--link-color);
+}
+
+h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    visibility: hidden;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.on-focus-mode h2.md-end-block.md-heading:not(.md-focus):not(.md-focus-container):after {
+    background-color: var(--blur-text-color) !important;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+p, blockquote, ul, ol, dl, table {
+    margin: var(--p-spacing) 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+li {
+    margin: 0.5em 0;
+}
+ul > li {
+    list-style: none;
+}
+#write ul > li:before {
+    content: "";
+    position: absolute;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background-color: #EBEBEB61;
+    transition: background-color .5s;
+    left: -1.25rem;
+    top: 0.55rem;
+}
+#write ul > .task-list-item:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: background-color .5s;
+    border: none;
+    left: 0;
+    top: 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: var(--horizontal-divider-color);
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul, ol {
+    padding-inline-start: 2em;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+.ty-table-edit {
+    margin-top: -1rem !important;
+}
+#write table {
+    margin-top: 1rem;
+    word-break: initial;
+    background-color: var(--table-bg-color);
+}
+table tr {
+    border-top: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 0;
+}
+table th {
+    font-weight: normal; /*修改表格样式 去掉标题加粗*/
+    border: .1em solid var(--table-border-color);
+    border-bottom: 0;
+    margin: 0;
+    padding: 8px 8px; /*修改表格样式*/
+}
+table td {
+    border: .1em solid var(--table-border-color);
+    margin: 0;
+    padding: 8px 8px; /*修改表格样式*/
+}
+table thead {
+    background-color: var(--table-header-bg-color);
+}
+table tr:nth-child(2n) {
+    background-color: var(--table-n2-bg-color);
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write table thead th {
+    background-color: var(--table-header-bg-color);
+}
+
+/*shortcut*/
+kbd {
+    border: .1em solid #5b5b5e;
+    background: transparent;
+    color: var(--text-color);
+    margin: 0 .4rem;
+    font-family: var(--text-font) !important;
+    font-size: .95rem;
+    padding: .3em .4em;
+    border-radius: .4em;
+    box-shadow: .1em .1em .2em rgba(0, 0, 0, 0.3);
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 12px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+/*YAML*/
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    background-color: var(--yaml-bg-color);
+    border: 0;
+    border-radius: 2px;
+    color: var(--yaml-color);
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 2px;
+    font-family: initial;
+    padding: 2px 0 0 4px;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.typora-quick-open-item {
+    font-size: 1rem !important;
+    height: 50px;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#typora-quick-open {
+    box-shadow: 0 0 8px #00000045;
+    padding: 0;
+}
+
+.ty-quick-open-category.ty-has-prev .ty-quick-open-category-title {
+    border-top: none;
+}
+
+#typora-quick-open-input {
+    margin: 8px;
+    box-shadow: none;
+    border-radius: 2px;
+}
+
+#typora-quick-open-input input {
+    font-size: 1rem;
+    box-shadow: none;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 32px;
+    max-height: 32px;
+    border: none;
+}
+
+.modal-dialog#typora-quick-open {
+    border-radius: 8px;
+}
+
+.ty-quick-open-category-title {
+    padding-left: 8px;
+    color: #BEBEBE;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.typora-quick-open-item-path {
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 1px;
+}
+
+/*search input*/
+.form-control {
+    border: none;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+#md-searchpanel .btn {
+    border-radius: 2px;
+}
+
+#search-panel-replaceall-btn {
+    padding-right: 5px !important;
+    text-align: center !important;
+}
+
+#search-panel-replace-btn {
+    text-align: center !important;
+}
+
+#md-searchpanel input {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+.searchpanel-search-option-btn {
+    border-radius: 2px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.searchpanel-search-option-btn.active {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: initial;
+}
+
+/*sidebar*/
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+.file-node-content {
+    display: flex;
+    align-items: center;
+}
+.file-node-open-state {
+    margin-right: .5rem;
+}
+.file-node-icon {
+    margin-right: .5rem;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+.file-list-item-summary, .file-list-item-parent-loc, .file-list-item-time, .file-list-item-summary {
+    font-size: 0.9rem !important;
+    font-family: var(--text-font);
+}
+
+.file-list-item-file-ext-part {
+    display: none;
+}
+
+.outline-item {
+    font-size: 1rem;
+}
+
+/*footnotes mark*/
+#write .md-footnote {
+    background-color: inherit;
+    color: var(--drake-highlight);
+    font-size: 0.9rem;
+    border-radius: 0.9rem;
+    padding-left: 0;
+}
+
+#write .md-footnote:before {
+    content: "[";
+}
+
+#write .md-footnote:after {
+    content: "]";
+}
+
+/*footnotes content*/
+.md-hover-tip .code-tooltip-content {
+    border-radius: 2px;
+}
+
+/*footnotes title*/
+span.md-def-name {
+    padding-right: 3ch;
+    padding-left: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+/*footnotes desc*/
+.footnotes {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--text-color);
+    position: relative;
+}
+
+/*footnotes tooltip text*/
+.code-tooltip-content .md-plain {
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+.code-tooltip-content code {
+    padding: 0 2px;
+    font-family: inherit;
+    color: var(--footnotes-highlight);
+    background-color: inherit;
+}
+
+.code-tooltip-content a {
+    color: var(--footnotes-highlight);
+}
+
+div.code-tooltip-content {
+    box-shadow: 0 0 8px #00000045;
+    background: var(--footnotes-bg-color);
+}
+
+.footnotes {
+    opacity: 1;
+}
+
+.md-def-name:after {
+    content: ". ^";
+    color: var(--text-color);
+}
+
+.md-def-footnote .md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-def-name:before {
+    content: "";
+    color: var(--text-color);
+    position: absolute;
+}
+
+.md-content.md-url, .md-def-content.md-def-url.md-auto-disp {
+    text-decoration: none;
+    border-bottom: .1rem solid var(--text-color);
+}
+
+.CodeMirror-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.file-list-item-summary {
+    font-size: 1em;
+}
+
+.pin-outline #outline-content .outline-active strong, .pin-outline .outline-active {
+    font-weight: 500;
+    color: var(--outline-active-color);
+}
+
+.file-list-item.active {
+    border-left: 4px solid var(--drake-accent);
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+    background: var(--btn-hover-bg-color);
+}
+
+/*checkbox*/
+#write input[type=checkbox] {
+    opacity: 0;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+    margin-top: 0;
+    top: 0;
+}
+
+#write .ul-list li.md-task-list-item.task-list-done::before {
+    content: "";
+    background: var(--checkbox-checked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+#write .ul-list li.md-task-list-item.task-list-not-done::before {
+    content: "";
+    background: var(--checkbox-unchecked) 0 0 no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-left: -2em;
+}
+.task-list-item p {
+    line-height: 1.6rem;
+}
+
+/*insert table*/
+.btn {
+    border-radius: 2px;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+
+.btn-primary:hover, .btn-primary:active {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--drake-highlight);
+}
+
+.btn-primary {
+    background-color: transparent;
+    color: var(--drake-highlight);
+}
+
+.btn-default {
+    background-color: transparent;
+}
+
+.btn:active {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+#table-insert-col, #table-insert-row {
+    background: var(--input-bg-color);
+    border-radius: 2px;
+}
+
+/*preference panel*/
+#megamenu-content {
+    background-image: none !important;
+    background-color: var(--bg-color);
+}
+#top-titlebar {
+    height: inherit;
+    background-color: var(--bg-color);
+}
+#megamenu-menu-sidebar {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.long-btn {
+    width: inherit;
+    min-width: 300px;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+}
+.megamenu-menu-panel h1 {
+    margin-bottom: 3rem;
+    text-align: left;
+}
+.megamenu-menu-panel h1, .megamenu-menu-panel h2 {
+    font-weight: normal;
+}
+#recent-file-panel-search-input {
+    height: 45px;
+    border: none;
+    border-bottom: 1px solid var(--text-color);
+    padding-left: 8px;
+}
+#recent-file-panel-search-input::placeholder {
+    color: var(--text-color);
+    opacity: .5;
+}
+.megamenu-menu-header {
+    border-bottom: none;
+}
+#recent-file-panel-action-btn {
+    background: none;
+    border: none;
+}
+#recent-file-panel-action-btn-container {
+    float: none;
+    display: inline-block;
+}
+#top-titlebar .toolbar-icon.btn.hover, #top-titlebar .toolbar-icon.btn:hover {
+    background-color: var(--btn-hover-bg-color);
+    color: var(--text-color);
+}
+.megamenu-menu-panel .btn:hover {
+    background-color: var(--btn-hover-bg-color) !important;
+    color: var(--text-color);
+}
+#recent-file-panel tbody tr:nth-child(2n-1),
+.megamenu-menu-panel table thead,
+.megamenu-menu-panel table tr {
+    background-color: transparent;
+}
+.megamenu-menu-panel table {
+    font-weight: normal;
+}
+#megamenu-back-btn {
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+.megamenu-menu-header #megamenu-menu-header-title {
+    color: var(--text-color);
+}
+header, .context-menu, .megamenu-content, footer {
+    font-family: var(--text-font);
+}
+.ty-preferences select {
+    padding-left: 2px;
+}
+.preference-item-hint {
+    font-size: 14px;
+}
+a.ty-link {
+    color: var(--a-color);
+    margin: 0 .2rem;
+}
+
+/*
+  Name:       material
+  Author:     Mattia Astorino (http://github.com/equinusocio)
+  Website:    https://material-theme.site/
+*/
+.cm-s-inner.CodeMirror {
+    background: none;
+    color: var(--code-block-color);
+}
+.cm-s-inner .CodeMirror-gutters {
+    border-right: none;
+    border-radius: 2px;
+    padding-left: 0.5rem;
+    background: #212121;
+    color: #545454;
+}
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+    color: #545454;
+}
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::selection {
+    background: rgba(128, 203, 196, 0.2);
+}
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+    background: rgba(128, 203, 196, 0.2);
+}
+.cm-s-inner .cm-keyword {
+    color: #C792EA;
+}
+.cm-s-inner .cm-operator {
+    color: #89DDFF;
+}
+.cm-s-inner .cm-variable-2 {
+    color: var(--code-block-color);
+}
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+    color: #f07178;
+}
+.cm-s-inner .cm-builtin {
+    color: #FFCB6B;
+}
+.cm-s-inner .cm-atom {
+    color: #F78C6C;
+}
+.cm-s-inner .cm-number {
+    color: #F07178;
+}
+.cm-s-inner .cm-def {
+    color: #82AAFF;
+}
+.cm-s-inner .cm-string {
+    color: #C3E88D;
+}
+.cm-s-inner .cm-string-2 {
+    color: #f07178;
+}
+.cm-s-inner .cm-comment {
+    color: #57A64A;
+}
+.cm-s-inner .cm-variable {
+    color: var(--code-block-color);
+}
+.cm-s-inner .cm-tag {
+    color: #F07178;
+}
+.cm-s-inner .cm-bracket {
+    color: #89DDFF;
+}
+.cm-s-inner .cm-meta {
+    color: #FFCB6B;
+}
+.cm-s-inner .cm-attribute {
+    color: #C792EA;
+}
+.cm-s-inner .cm-property {
+    color: #C792EA;
+}
+.cm-s-inner .cm-qualifier {
+    color: #DECB6B;
+}
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+    color: #DECB6B;
+}
+.cm-s-inner .cm-error {
+    color: rgba(255, 255, 255, 1.0);
+    background-color: #F07178;
+}
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: white !important;
+}
+.cm-s-inner .CodeMirror-selected {
+    background: #214283 !important;
+}
+.cm-s-inner .CodeMirror-selectedtext {
+    background: #214283 !important;
+}
+.cm-s-typora-default .CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-overlay.CodeMirror-selectedtext {
+    background: var(--select-text-bg-color) !important;
+}
+.cm-s-inner div.CodeMirror-cursor {
+    border-left: 1px solid var(--code-block-color);
+}
+.cm-s-inner .cm-header, .cm-s-inner.cm-header {
+    color: #FFD760;
+}
+
+/*引用块*/
+blockquote:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 0px;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+blockquote {
+    color: var(--blockquote-color);
+    border-radius: 2px;
+    padding: 10px 16px;
+    background-color: var(--blockquote-bg-color);
+    position: relative;
+    border-left: none;
+    font-size: 13px;
+}
+
+/*粗体 删除线 斜体 行内代码*/
+#write strong,
+#write del,
+#write em,
+#write code
+{
+    background-color: transparent;
+    padding: 1px 5px 1px 5px;
+    border-radius: 2rem;
+    margin: 0 .2rem;
+    font-size: .95rem;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    border: .1em solid;
+}
+#write strong {
+    border-color: var(--accent-color-1);
+    color: var(--accent-color-1);
+}
+#write del {
+    border-color: var(--accent-color-2);
+    color: var(--accent-color-2)
+}
+#write em {
+    border-color: var(--accent-color-3);
+    color: var(--accent-color-3);
+}
+#write code {
+    border-color: var(--accent-color-4);
+    color: var(--accent-color-4);
+}
+
+/*侧边栏和正文和分割线*/
+#typora-sidebar {
+    font-size: inherit;
+    font-family: var(--title-font);
+    border-right: 1px dashed;
+}
+
+/*图片居左*/
+p .md-image:only-child {
+    width: auto;
+    text-align: left;
+}
+
+/*去掉居中*/
+h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+/*侧边栏恢复默认字体大小*/
+.file-library-node.file-tree-node.file-node-root {
+    /*font-size: 1.1rem;*/
+}
+
+/*表格宽度自适应 子类的这个元素不能删除*/
+#write table {
+    width: auto;
+}
+
+
+</style><title>尚品APP</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#📦项目信息">📦项目信息</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈业务组成">🥈业务组成</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈技术架构">🥈技术架构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈服务划分">🥈服务划分</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈用户量数据量并发量硬件配置">🥈用户量+数据量+并发量+硬件配置</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈项目人员开发周期">🥈项目人员+开发周期</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#其他项目经验">其他项目经验</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🧇数据表设计">🧇数据表设计</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🧔用户中心">🧔用户中心</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈发送短信验证码">🥈发送短信验证码</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈注册流程">🥈注册流程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈用户登录">🥈用户登录</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉分布式session">🥉分布式session</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉token有两种方案">🥉Token有两种方案</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#✨服务端不存token">✨服务端不存Token</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#✨服务端存token">✨服务端存Token</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🛍️商品中心">🛍️商品中心</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈商品分类">🥈商品分类</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉后台分类">🥉后台分类</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉前台分类">🥉前台分类</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈品牌制造商">🥈品牌/制造商</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈spusku属性">🥈SPU&amp;SKU&amp;属性</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈商品详情">🥈商品详情</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈商品发布上架">🥈商品发布&amp;上架</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉发布">🥉发布</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉上架">🥉上架</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈搜索服务商品列表">🥈搜索服务&amp;商品列表</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉索引结构">🥉索引结构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉分页列表的展示顺序">🥉分页列表的展示顺序</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉分页列表的筛选维度">🥉分页列表的筛选维度</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉其他点">🥉其他点</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈购物车">🥈购物车</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🔥秒杀">🔥秒杀</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈场景瓶颈关注点">🥈场景&amp;瓶颈&amp;关注点</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈业务流程">🥈业务流程</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉活动上线">🥉活动上线</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉客户端展示">🥉客户端展示</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉秒杀流程">🥉秒杀流程</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈高可用问题">🥈高可用问题</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈rocketmq相关的问题">🥈RocketMQ相关的问题</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉秒杀step5为什么异步发消息">🥉秒杀step5为什么异步发消息</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉同步双写vs异步双写">🥉同步双写VS异步双写</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥉消息重复发送的问题">🥉消息重复发送的问题</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈超卖和少买的问题">🥈超卖和少买的问题</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🧧双11红包雨">🧧双11红包雨</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🌐第三方接入服务">🌐第三方接入服务</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈发送短信">🥈发送短信</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈获取阿里云oss防伪签名">🥈获取阿里云OSS防伪签名</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈物流能力的接入">🥈物流能力的接入</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#🥈支付">🥈支付</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='📦项目信息'><span>📦项目信息</span></h1><blockquote><p><span>是在博锐做的商城APP</span></p></blockquote><h2 id='🥈业务组成'><span>🥈业务组成</span></h2><p><code>数字马力面试中的业务架构</code></p><blockquote><p><span>在业务架构方面，主要关注系统的功能需求、业务流程以及业务特点。通过与业务部门密切合作，梳理了用户需求和业务流程，确定了系统的关键功能模块，比如下面这些。</span>
+<span>同时，我们还对业务数据进行建模和分析，确保了业务架构的合理性和完整性。</span></p><p><span>深刻认识和经验：</span>
+<span>多年的经验告诉了我深入理解业务需求和业务流程的重要性。在项目初期，我们需要花费更多的时间和精力去梳理和分析业务需求，确保系统的功能设计和业务流程符合用户的需求和预期。同时，我们也需要不断与业务人员进行沟通和协作，及时获取用户的反馈和意见，以便对系统进行优化和改进。</span></p></blockquote><ul><li><p><span>用户中心：注册、登录、鉴权、账号安全、用户下线</span></p></li><li><p><span>运营用户管理：管理员增删改查运营用户、权限管理</span></p></li><li><p><span>商品管理：商品分类、品牌/制造商、属性、商品上架下架</span></p></li><li><p><span>APP页面：首页、商品分类、搜索、商品列表、商品详情、评价</span></p></li><li><p><span>交易：购物车、下单、支付、退货、退款</span></p></li><li><p><span>促销：秒杀活动、促销活动、拼团活动</span></p></li><li><p><span>红包雨</span></p></li><li><p><span>库存管理：采购入库</span></p></li><li><p><span>物流系统</span></p></li><li><p><span>客服：在线人工、售后系统</span></p></li></ul><h2 id='🥈技术架构'><span>🥈技术架构</span></h2><p><code>数字马力面试中的技术架构</code></p><blockquote><p><span>在技术架构方面，我们综合考虑了项目的需求、团队的技术实力以及未来的可维护性。</span></p><p><span>首先，我们采用了敏捷开发方法，以短周期迭代开发的方式进行项目开发。这使得我们可以快速响应需求变更，提高开发效率和质量。</span></p><p><span>为了实现前后端分离，我们采用了 RESTful API 进行前后端交互。前后端分离可以独立开发和测试，降低了耦合度。</span></p><p><span>为了降低网络延时，利用了 CDN 来缓存静态资源，减少响应时间</span></p><p><span>在数据库方面</span>
+<span>我们选择 MySQL 做数据持久化存储，通过分库分表和读写分离进行请求分流，实现了高性能的读写。</span>
+<span>使用 Redis 作为缓存层来提高系统性能。</span>
+<span>同时还使用了 Elasticsearch 来提供搜索功能，使用 RocketMQ 来实现异步消息处理。</span></p><p><span>而且考虑到高可用，将并发量大的容易出现问题的业务与主业务进行服务隔离，避免影响到主业务。</span></p><p><span>为了及时处理线上问题，我们有专门的服务实时监控各个微服务的健康状态，出现问题及时报警。</span></p><p><span>这些技术的综合应用使得我们的系统具有良好的性能和可扩展性。</span></p><p><span>在数据安全方面</span>
+<span>存储安全：对于必须要解密的数据，比如密码，采用散列算法加密，不用担心被逆向破解；对于需要解密的数据，采用可逆的对称加密算法，比非对称加密更快</span>
+<span>传输安全：使用了 https 保证的数据的防泄密和防伪造，而且针对需要响应给用户的敏感数据进行脱敏处理后再响应</span></p></blockquote><p><span>首先项目是</span><strong><span>动静分离</span></strong><span>的</span></p><p><span>静态资源都存储在</span><strong><span>CDN</span></strong><span>加快了静态资源的访问速度</span></p><p><span>源站采用</span><strong><span>微服务架构</span></strong>
+<span>项目按照功能以及其他边界拆分成了多个应用，对流量进行了分流</span>
+<span>每个应用都是一个无状态集群，方便横向扩展，进行了进一步分流，集群内服务越多能够支撑的流量就越大</span></p><p><strong><span>Nginx</span></strong><span>做流量网关，做负载均衡与流量转发，搭配 keepalived 实现高可用</span></p><p><strong><span>gateway</span></strong><span>是业务网关，做鉴权等工作</span>
+<span>为什么用了 gateway 还要用 nginx？</span>
+<span>因为 gateway 的性能远不及 nginx，使用 nginx 能接入更多的流量，再分发给 gateway 集群</span></p><p><strong><span>Nacos</span></strong><span>作注册中心和配置中心</span></p><p><strong><span>Sentinel</span></strong><span>用作限流、熔断和降级，使用压测的数据做限流</span></p><p><span>链路监控用</span><strong><span>skywalking</span></strong></p><p><strong><span>Redis集群</span></strong><span>作分布式缓存</span></p><p><strong><span>RocketMQ</span></strong><span>用作解耦、异步、削峰、最终一致性等场景</span></p><p><span>数据持久化用</span><strong><span>MySQL</span></strong><span>主从架构</span></p><p><span>商品搜索引擎使用</span><strong><span>ES</span></strong></p><p><strong><span>分布式定时任务调度</span></strong><span>用XXL-JOB</span>
+<strong><span>分布式ID</span></strong><span>利用两台Redis实现</span>
+<strong><span>分布式事务</span></strong><span>用Seata</span>
+<strong><span>分布式锁</span></strong><span>用Redisson</span></p><p><span>对象云存储使用的</span><strong><span>阿里云OSS</span></strong></p><p><span>运维部署使用</span><strong><span>K8S</span></strong></p><h2 id='🥈服务划分'><span>🥈服务划分</span></h2><p><code>数字马力面试中的系统架构</code></p><blockquote><p><span>在系统架构方面，注重模块化、可扩展性和高可用性。</span></p><p><span>首先，将系统划分为前端用户界面、后端业务逻辑和数据存储三个主要模块。前端用户界面负责与用户交互，后端业务逻辑处理业务逻辑，数据存储负责数据的读写。</span></p><p><span>为了提高系统的可扩展性，我们采用了微服务架构，将各个功能模块划分为独立的微服务。这种架构使得每个微服务都可以独立开发、测试和部署，大大提高了开发效率。</span></p><p><span>同时，我们还采用了云原生容器化技术（Docker、K8S）实现了快速部署和水平扩展。</span></p><p><span>为了确保高可用性，我们采用了负载均衡和容错机制。通过配置负载均衡器，我们将请求分散到多个服务器上，确保了系统的吞吐量和响应速度。同时，容错机制使得当部分服务器发生故障时，系统仍能保持正常运行。</span></p></blockquote><ul><li><p><span>网关服务</span></p></li><li><p><span>用户服务</span></p></li><li><p><span>商品服务（包括购物车、评价）</span></p></li><li><p><span>搜索服务</span></p></li><li><p><span>秒杀服务</span></p></li><li><p><span>促销服务</span></p></li><li><p><span>库存服务</span></p></li><li><p><span>订单服务</span></p></li><li><p><span>第三方接入服务</span></p></li><li><p><span>客服服务</span></p></li></ul><h2 id='🥈用户量数据量并发量硬件配置'><span>🥈用户量+数据量+并发量+硬件配置</span></h2><p><span>后期的用户量有15W，日活1W+，QPS 在 2000 左右，这个配置足以满足日常的需求</span></p><p><span>以商品中心举例：服务器配置是 CentOS7 2C4G，压测结果是一台服务可以支撑 1500QPS，考虑到 2000QPS 我们使用了三台服务器</span></p><p><strong><span>QPS</span></strong></p><p><del><span>1000QPS 是什么水平？</span></del></p><p><span>一些简单的网站或者小型应用可能只需要处理几十个QPS</span>
+<span>一些中等规模的应用可能需要处理几百到几千的QPS</span>
+<span>而一些大型应用则需要处理数万个甚至更多的QPS</span></p><p><span>因此，1000QPS 能够满足一些中等规模的应用需求，但对于一些大型应用来说，可能需要更高的QPS</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231007093736903.png" alt="image-20231007093736903" style="zoom:70%;" /></p><p><del><span>2C4G能支持多少QPS</span></del></p><p><span>一般而言，这样的服务器能够支持大约几百到几千的QPS</span></p><p><del><span>QPS如何估算</span></del></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231007093859435.png" alt="image-20231007093859435" style="zoom:80%;" /></p><h2 id='🥈项目人员开发周期'><span>🥈项目人员+开发周期</span></h2><p><strong><span>这个如果不问就不说</span></strong></p><p><span>项目人员：研发负责人、后端开发、安卓/IOS、UI、测试、运维；总人数20+</span></p><p><span>项目上线用了2个月</span></p><h1 id='其他项目经验'><span>其他项目经验</span></h1><blockquote><p><span>文档编写和知识积累的重要性。包括需求文档、设计文档、测试文档、代码注释等。通过这些文档和资料能更好地理解项目的过程和结果，为未来的项目提供宝贵的经验和支持。</span></p></blockquote><blockquote><p><span>不断学习和自我提升的重要性。不断学习和尝试新的技术和方法，提高技术水平和解决问题的能力。</span></p></blockquote><h1 id='🧇数据表设计'><span>🧇数据表设计</span></h1><p><span>查看语雀：</span><a href='https://www.yuque.com/felix.y/fhtohl/tg1gz5z96r912eci'><span>尚品APP数据表设计</span></a></p><p><strong><span>商品中心</span></strong></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014083636831.png" style="zoom:36%;" /></p><p><strong><span>库存管理</span></strong></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231018141744522.png" alt="image-20231018141744522" style="zoom: 40%;" /></p><p><strong><span>促销中心</span></strong></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231018141834039.png" alt="image-20231018141834039" style="zoom:40%;" /></p><h1 id='🧔用户中心'><span>🧔用户中心</span></h1><h2 id='🥈发送短信验证码'><span>🥈发送短信验证码</span></h2><p><span>1、调用【第三方接入服务】发送短信成功，短信内容为随机验证码</span>
+<span>2、然后把【验证码+当前时间】作为 value，【固定前缀+手机号】作为 key 存入 redis，过期时间是5分钟</span></p><p><strong><span>为了防止恶意流量，设计的是1分钟内不允许重复发送短信</span></strong></p><p><span>发短信前，根据手机号从 redis 取出 value，如果有且解析得到的【当前时间】与当前时间差小于一分钟，就提示用户短信发送过于频繁稍后再试</span></p><h2 id='🥈注册流程'><span>🥈注册流程</span></h2><ol start='' ><li><p><span>校验提交信息的合法性，比如空值判断</span></p></li><li><p><span>校验验证码（如果验证成功就从 redis 删除）</span></p></li><li><p><span>校验用户名和手机号是否重复</span></p></li><li><p><span>加密密码后，插入数据库</span></p></li><li><p><span>返回成功</span></p></li></ol><h2 id='🥈用户登录'><span>🥈用户登录</span></h2><p><span>分布式会话可以考虑的方案：分布式session 和 Token</span></p><h3 id='🥉分布式session'><span>🥉分布式session</span></h3><ul><li><p><span>使用 redis 实现 session 共享</span></p></li><li><p><span>用 session 必须 cookie 配合，浏览器支持 cookie，但原生APP不支持，而用 Token 更加简单</span></p></li></ul><h3 id='🥉token有两种方案'><span>🥉Token有两种方案</span></h3><h4 id='✨服务端不存token'><span>✨服务端不存Token</span></h4><p><span>不存就必须给 Token 设置过期时间</span></p><p><span>【典型例子】就是 JWT，即 json web token，JWT 分为三个部分：</span></p><ol start='' ><li><p><span>第一部分是算法本身转化的 Base64 字符串</span></p></li><li><p><span>第二部分是用户信息转化的 Base64 字符串</span></p></li><li><p><span>第三部分是使用算法和盐对前两个部分的加密（无法逆向破解的算法）</span></p></li></ol><p><span>【安全性】别人不知道我的算法和盐就无法伪造正确的 Token</span></p><p><span>【优点】服务端免去了存储 Token 的负担，而且解析 Token 比查共享存储验证权限速度快</span></p><p><span>【缺点】不能及时关闭对用户的授权，只能依赖于 Token 过期；用户 Token 被盗就麻烦了</span>
+<span>【解决方案】就是添加 Token 黑名单，但这依赖于共享存储，违背了不存的初衷，因此不合适</span></p><p><span>因此不存 Token 适用于对安全性要求不高的场景</span></p><h4 id='✨服务端存token'><span>✨服务端存Token</span></h4><p><span>想关闭授权删除用户的 Token 即可，用户需要重新登录才能取得授权</span></p><p><strong><span>共享存储的选择</span></strong></p><p><span>不推荐用数据库性能较低，可以使用高可用的 Redis 集群</span></p><p><strong><span>Redis宕机？</span></strong></p><p><span>宕机是偶发现象，而且即使宕机造成部分 Token 丢失影响的用户量也不会很大，完全可以接受</span></p><p><strong><span>双 Token 提升用户体验</span></strong></p><p><span>一旦 Token 到期从 Redis 中删除，用户就得重新登录，这样会影响用户体验</span></p><p><span>每次请求都更新 Token？如果请求断了没收到响应，用户就得重新登录</span></p><p><span>我优化的方案是使用双 Token，用户登录成功之后下发双 Token：accessToken 和 refreshToken</span></p><ul><li><p><span>accessToken 用于接口调用</span></p></li><li><p><span>refreshToken 用于 Token 刷新：如果调用接口发现 accessToken 过期，就调用刷新 Token 接口得到新的双 Token，再利用新的 accessToken 再次调用原接口，因此 refreshToken 过期时间比 accessToken 长一些</span></p></li></ul><p><strong><span>关闭授权</span></strong></p><p><span>同时删除双 Token 即可</span></p><p><strong><span>另外为了用户安全，防止暴力破解</span></strong></p><p><span>如果密码 or 验证码多次校验失败，当天禁止用户登录，利用 Redis 计数器实现</span></p><p><strong><span>密码安全</span></strong></p><p><span>散列算法不可逆不会被逆向破解，对称加密和非对称加密可以被逆向破解</span>
+<span>因为密码没有解密的需求，因此使用散列算法，更加安全</span></p><h1 id='🛍️商品中心'><span>🛍️商品中心</span></h1><h2 id='🥈商品分类'><span>🥈商品分类</span></h2><h3 id='🥉后台分类'><span>🥉后台分类</span></h3><p><span>商城APP 使用的是树状的分类</span></p><p><span>用户是经常访问分类的，如果每次都查数据库显然是不行的，影响用户体验，而且请求量大的时候对数据库造成压力</span></p><p><span>我想到了两种方案</span></p><p><strong><span>方案1</span></strong><span>APP写死，不再请求服务端获取分类信息</span></p><p><span>优点是释放了服务端的压力</span>
+<span>缺点是无法动态更新分类</span></p><p><strong><span>方案2</span></strong><span>用 Redis 缓存</span></p><p><del><span>缓存预热</span></del></p><p><span>服务启动时缓存预热，写一个 Bean 实现 CommandLineRunner 或 ApplicationRunner 接口，在 run() 中从数据库中查询分类信息并存入 Redis</span></p><p><del><span>增删改分类信息的缓存一致性问题</span></del></p><p><span>双写一致性可以参考《三高架构》</span></p><p><span>双写一致性的最优方案也可能出现不一致的情况，虽然概率很低，有下面几种解决方案：</span></p><ol start='' ><li><p><span>加锁保证写的顺序，能保证强一致，但不适合并发量大的场景</span></p></li><li><p><span>如果数据一致性要求不高，加上一个过期时间即可</span></p></li><li><p><span>如果数据一致性要求高，用 canal 订阅数据库 binlog 更新缓存，落库顺序与更新缓存顺序一致</span></p></li></ol><p><strong><span>方案选型</span></strong></p><ul><li><p><span>【方案1】</span></p><ul><li><p><span>是实现最简单且性能最高的方案，满足业务需求的话肯定采用</span></p></li><li><p><span>但是</span><del><span>项目初期</span></del><span>，不断有新分类加入的需求，用户不更新 APP 就看不到新分类，影响商品销售</span></p></li><li><p><span>因此没有使用方案1，而是使用的方案2，而【方案1】考虑在后期分类稳定的时候或许可以采用</span></p></li></ul></li><li><p><span>【方案2】</span></p><ul><li><p><span>【1】不合适</span></p></li><li><p><span>【3】设计有点复杂了而且实现起来挺麻烦</span></p></li><li><p><span>我们采用【2】满足需求且实现简单；需要注意的是【2】要注意预防缓存带来的风险：缓存穿透、击穿、雪崩</span></p></li></ul></li></ul><p><span>上面的【2】在缓存失效后，大量并发还是会阻塞等待</span></p><h3 id='🥉前台分类'><span>🥉前台分类</span></h3><ul><li><p><span>后台分类的层级到了三级，已经不适用于移动端了，操作太深影响用户体验</span></p></li><li><p><span>后台分类是基础数据不允许随便改动</span></p></li><li><p><span>APP商品分类不一定要用后台分类的名称，应该选择适合导购的名称</span></p></li><li><p><span>APP商品分类需要动态变化，比如服装类，季节不同商品分类的排序是不同的，夏季肯定把夏装放在前面</span></p></li><li><p><span>APP商品分类还有聚合后台分类的需求，将有通用属性的商品聚合展示，比如将后台分类的连衣裙、长裙聚合为前台分类女裙</span></p></li><li><p><span>特殊分类：给每个类型分配一个标志位，搜索服务根据请求的标志位做搜索</span></p><ul><li><p><span>新品：没有关联的后台分类，搜索上架时间小于两周的商品</span></p></li><li><p><span>秒杀促销：请求秒杀服务从缓存中获取商品列表</span></p></li><li><p><span>满减促销：请求的是搜索引擎</span></p></li></ul></li></ul><h2 id='🥈品牌制造商'><span>🥈品牌/制造商</span></h2><p><span>商品的来源有的是采购的品牌商品，有的是直接找到的某品牌的制造商</span></p><p><span>品牌是在类目树的叶子节点下创建的，品牌与商品分类是多对多的关系</span></p><h2 id='🥈spusku属性'><span>🥈SPU&amp;SKU&amp;属性</span></h2><p><strong><span>SPU</span></strong></p><p><span>全称是 Standard Product Unit，标准产品单元</span>
+<span>通俗点讲，基本属性相同的商品就可以称为一个SPU</span></p><p><span>京东举例如下图：</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1685173735566-d482242a-9df5-4d61-90c2-3c2f9dcd5fb1.png" alt="image.png" style="zoom:67%;" /></p><p><strong><span>SKU</span></strong></p><p><span>全称是 stock keeping unit，库存量单位</span></p><p><span>还是用京东举例：</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1685185379448-567e5d37-bfe1-4236-9f7d-7d4ac01f1c3c.png" alt="image.png" style="zoom:67%;" /></p><p><strong><span>基本属性&amp;销售属性</span></strong></p><p><span>基本属性就是 SPU 对应的公共属性</span>
+<span>销售属性是 SKU 特有的属性</span></p><p><strong><span>属性组</span></strong></p><p><span>PS：这个项目没有用到属性组</span>
+<span>属性组需要和基本属性关联</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1683840607170-f668d3bb-61a1-4a2e-8d8b-e4f81ebeb120.png" alt="img" style="zoom: 96%;" /></p><h2 id='🥈商品详情'><span>🥈商品详情</span></h2><p><span>我们做商品详情功能的时候，参考了淘宝和京东的效果</span></p><p><strong><span>淘宝</span></strong><span>切换SKU 的时候，浏览器地址没有变化，页面没有刷新，商品标题也没有变化</span>
+<strong><span>京东</span></strong><span>切换SKU 的时候，浏览器地址有变化，页面有刷新，商品标题也在动态切换为 SKU 的标题</span></p><p><strong><span>淘宝的优点</span></strong><span>请求服务端的次数少很多，能极大的减轻服务端的压力</span>
+<strong><span>京东的优点</span></strong><span>商品的描述更加精细化</span>
+<code>这算是一个考量</code></p><p><code>另外一个考量</code><span>是</span><strong><span>搜索分页</span></strong><span>，根据实际效果以及上面的描述</span>
+<strong><span>淘宝</span></strong><span>SKU标题都一样，应该是共用的 SPU 标题，因此 ES 索引是 SPU 维度的，不存在搜索数据重复的问题</span>
+<strong><span>京东</span></strong><span>搜索得到的是具体的 SKU 标题</span>
+<span>（京东）如果 ES 索引是 SKU 维度的，那搜索得到的结果可能出现重复数据，即 SKU 不同但 SPU 相同，可以是使用 collapse 折叠去重</span>
+<span>（京东）如果 ES 索引是 SPU 维度的，每条索引数据里面存放多个 SKU，怎么做到搜索动态匹配 SKU 呢？这个好像做不到</span></p><p><code>结合上面的考量</code><span>，以及我们并不需要非常的精细化描述，用淘宝方式的效果完全可以，而且性能好</span></p><p><span>PS：为了商品详细描述部分的美观，设计的是不让输入文字，只能上传多张图片，数据库表用一个字段存储了多张图片的地址以逗号分隔</span></p><p><span>PS：根据 SPU_ID 查询商品详情使用</span><strong><span>异步</span></strong><span>加速查询</span></p><h2 id='🥈商品发布上架'><span>🥈商品发布&amp;上架</span></h2><h3 id='🥉发布'><span>🥉发布</span></h3><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1685184818313-197486aa-8ccc-4de0-9357-649d438db7e9.png" alt="image.png" style="zoom: 67%;" /></p><p><span>根据【商品分类ID】查询所有的【基本属性】</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1685160890476-7aca726a-53ef-4df7-a350-bc404b6ecf7e.png" referrerpolicy="no-referrer" alt="image.png"></p><p><span>根据【商品分类ID】查询所有的【销售属性】</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1685161310553-ee232b5d-c9fa-4377-8c03-10c73997d071.png" alt="image.png" style="zoom:77%;" /></p><p><span>最后保存：</span></p><ol start='' ><li><p><span>保存 SPU 基本信息、详细信息、图集</span></p></li><li><p><span>保存商品基本属性（规格参数）</span></p></li><li><p><span>保存 SKU 信息</span></p></li><li><p><span>保存商品销售属性</span></p></li></ol><h3 id='🥉上架'><span>🥉上架</span></h3><ol start='' ><li><p><span>将 SPU 信息存入 ES（调用搜索服务）</span></p></li><li><p><span>更新 SPU 为上架状态</span></p></li></ol><h2 id='🥈搜索服务商品列表'><span>🥈搜索服务&amp;商品列表</span></h2><h3 id='🥉索引结构'><span>🥉索引结构</span></h3><p><span>方括号是非索引字段，不用于搜索，而是用于搜索分页列表展示</span></p><ul><li><p><span>商品分类ID</span></p></li><li><p><span>品牌ID</span></p></li><li><p><span>【品牌名称】</span></p></li><li><p><span>【品牌logo】</span></p></li><li><p><span>【SPU_ID】</span></p></li><li><p><span>SPU标题（ik分词器）</span></p></li><li><p><span>【SPU默认图片】</span></p></li><li><p><span>SPU价格（存各个SKU最低的价格）</span></p></li><li><p><span>是否有库存</span></p></li><li><p><span>上架时间</span></p></li><li><p><span>销量</span></p></li><li><p><span>商品所有属性ID列表（包括基本属性和销售属性）</span></p></li></ul><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231018105059442.png" alt="image-20231018105059442" style="zoom: 43%;" /></p><h3 id='🥉分页列表的展示顺序'><span>🥉分页列表的展示顺序</span></h3><ul><li><p><span>综合：没有任何字段的排序，按评分顺序</span></p></li><li><p><span>销量：按销量字段排序</span></p></li><li><p><span>上新：按上架时间排序</span></p></li><li><p><span>价格：按价格字段排序</span></p></li></ul><h3 id='🥉分页列表的筛选维度'><span>🥉分页列表的筛选维度</span></h3><ul><li><p><span>按搜索栏输入的词条匹配 SPU 标题</span></p></li><li><p><span>价格区间：使用价格字段</span></p></li><li><p><span>商品分类</span></p></li><li><p><span>品牌，每个分类（叶子）下都有一组品牌，点击分类将带出这些属性选项</span></p></li><li><p><span>属性ID，每个分类（叶子）下都有一些公共的可搜索属性，点击分类将带出这些属性选项，比如衣服的尺码（销售属性）、颜色（销售属性）、男女（基本属性）</span></p></li></ul><h3 id='🥉其他点'><span>🥉其他点</span></h3><ul><li><p><span>搜索历史存在本地</span></p></li><li><p><span>根据输入文字实时搜索热门词条</span></p></li><li><p><span>ES搜索语法请查看：</span><a href='https://www.yuque.com/pf_felix/rrb6od/sflfbc7ar6wnhrz3'><span>尚品APP搜索DSL (yuque.com)</span></a></p></li></ul><h2 id='🥈购物车'><span>🥈购物车</span></h2><p><strong><span>登录之前允许加入购物车吗？</span></strong></p><p><span>No，加入购物车必须登录</span></p><p><strong><span>购物车数据放在缓存还是数据库？</span></strong></p><p><span>缓存吧，CRUD速度快一些，而且购物车数据没那么重要，意外丢失点数据也是可以接受的</span></p><p><strong><span>购物车应该展示哪些信息？</span></strong></p><ul><li><p><span>商品信息：SPU+SKU 的基本信息、购买数量、总价、参与的促销活动、展示顺序、是否选中</span></p></li><li><p><span>汇总选中的商品计算总价</span></p></li></ul><p><strong><span>购物车什么时候更新？</span></strong></p><ol start='' ><li><p><span>用户主动修改</span></p></li><li><p><span>如果商品库存不足或者商品下架，应该及时提醒用户商品的状态，这算是被动更新</span></p></li><li><p><span>如果商品价格修改了，最好的体验是能够看到最新的价格，这也算是被动更新</span></p></li></ol><p><span>被动更新的实现方式可以采用 用户进入购物车时获取最新数据</span></p><p><strong><span>所有这些都存储缓存吗？</span></strong></p><p><span>没必要，缓存中只存储 SKU_ID、SKU_编码、购买数量、排序、是否选中</span></p><p><span>其他信息进入购物车时一并获取就行了</span></p><hr /><p><strong><span>进入购物车</span></strong></p><ul><li><p><span>根据 SKU_ID 从商品中心获得商品基本信息（SPU+SKU）、上架/下架状态</span></p></li><li><p><span>根据 SKU 编码从库存中心获得库存</span></p></li><li><p><span>根据 SKU_ID 获得商品参数的所有促销活动</span></p></li><li><p><span>前面的几个操作使用【异步】提升性能，最后汇总计算总价</span></p></li></ul><p><strong><span>添加购物车</span></strong><span>需要检查库存，库存不足时提示用户</span></p><p><strong><span>修改购物车（增加购买数量）</span></strong><span>也需要检查库存，库存不足时数量不变</span></p><p><strong><span>结算页？</span></strong><span>没有结算页</span></p><hr /><p><span>在购物车中支付前必须填写收货地址、订单备注、选择支付方式（类似拼多多的多多买菜）</span></p><p><span>单个商品点购买，选择SKU+选择收货地址+订单备注+选择支付方式，再支付</span></p><p><span>提交订单</span></p><p><span>点立即支付即提交订单</span></p><h1 id='🔥秒杀'><span>🔥秒杀</span></h1><h2 id='🥈场景瓶颈关注点'><span>🥈场景&amp;瓶颈&amp;关注点</span></h2><p><strong><span>秒杀将会产生大量的刷新商品详情页的操作，对商品中心会造成一定的负担</span></strong></p><p><span>针对这种场景可以关注的点有：</span></p><ul><li><p><span>动静分离，静态资源就不要请求后端服务集群了，越往前放越好，比如放在网关</span></p></li><li><p><span>客户端优化，参考 </span><a href='https://www.yuque.com/felix.y/dns6b6/fdcge7xpisil11zd'><span>三高架构</span></a></p></li><li><p><span>使用CDN，参考《三高架构》</span></p></li><li><p><span>使用缓存，把商品详情所需内容缓存起来，避免请求数据库</span></p></li></ul><p><strong><span>为了避免超卖的问题，一般的下订单扣库存都是加分布式锁排队更新数据库的，这就不适合秒杀了，因为秒杀的并发量很大会卡住影响用户体验</span></strong></p><p><span>针对这种场景可以关注的点有：</span></p><ul><li><p><span>使用缓存暂时代替数据库，加快业务处理速度</span></p></li><li><p><span>异步处理，快速响应</span></p></li></ul><p><strong><span>如果有恶意流量频繁下单不支付，或者支付了后续都申请退款，很可能影响商品的销售，因为扣除的库存短时间内无法恢复，如果商品卖光了，其他用户想买却买不到</span></strong></p><p><span>针对这种场景可以关注的点有：</span></p><ul><li><p><span>人机交互，让其付出代价，比如下单前需要输入验证码</span></p></li><li><p><span>设置只能卖一件，一般的用户也不会买多件</span></p></li><li><p><span>将超时未支付自动取消的时间缩短，尽快恢复库存</span></p></li><li><p><span>取消订单三次就不允许再购买了</span></p></li></ul><p><strong><span>其他</span></strong></p><ul><li><p><span>隔离：将秒杀业务作为独立的服务部署，避免影响到主业务，下面会讲到隔离的使用场景</span></p></li></ul><h2 id='🥈业务流程'><span>🥈业务流程</span></h2><h3 id='🥉活动上线'><span>🥉活动上线</span></h3><ol start='' ><li><p><span>新建秒杀活动</span></p></li><li><p><span>添加参与秒杀活动的商品，参与了秒杀的商品，不能再参与其他的秒杀场次</span>
+<span>添加商品锁库存，库存不够无法添加</span></p></li><li><p><span>定时任务扫描未开始的最近的三个秒杀活动，如果未上线就将活动上线</span></p><ol start='' ><li><p><span>更新秒杀活动的状态为上线，上线成功就继续操作</span></p></li><li><p><span>给 RocketMQ 发消息，发送失败就回滚</span></p></li></ol></li><li><p><span>消费者监听到消息就做下面的操作，下面操作都是异步</span></p><ol start='' ><li><p><span>将未上架的秒杀商品上架，保证能被搜索引擎搜索到</span></p></li><li><p><span>查询秒杀活动信息存入 Redis</span>
+<span>KV 是 【秒杀活动+秒杀活动ID】/【活动信息】</span>
+<span>这里以及下面的过期时间都是活动结束后5分钟</span></p></li><li><p><span>查询活动关联的所有 SKU 详细信息封装到 Redis 中</span>
+<span>KV 是【秒杀商品列表+秒杀活动ID+SKUID】/【SKU详细信息+活动开始和结束时间】</span></p></li><li><p><span>查询 SKU 库存作为信号量加入缓存（Redisson）</span>
+<span>key是【秒杀商品库存+秒杀活动ID+SKU_ID】</span></p></li><li><p><span>如果所有操作都成功返回成功</span>
+<span>只要有一个操作失败就返回失败，稍后继续消费这个消息</span></p></li></ol></li><li><p><span>定时任务扫描上线的所有秒杀活动，下线所有过期的活动，下架所有秒杀商品</span></p></li></ol><p><strong><span>为什么不把步骤3+4做成一个过程而是要拆开呢？</span></strong><span>为了保证最终一致性</span></p><h3 id='🥉客户端展示'><span>🥉客户端展示</span></h3><p><span>查的都是缓存</span></p><ol start='' ><li><p><span>以【秒杀活动】作为 key 前缀，查到所有的上线的秒杀活动</span></p></li><li><p><span>以【秒杀商品列表+秒杀活动ID】作为 key 前缀，查到商品列表包括详细信息</span></p></li><li><p><span>商品详情中库存查【秒杀商品库存+秒杀活动ID+SKU_ID】</span></p></li></ol><h3 id='🥉秒杀流程'><span>🥉秒杀流程</span></h3><p><strong><span>为了不和其他业务耦合，秒杀商品不支持添加购物车</span></strong></p><ol start='' ><li><p><span>点击购买，提交商品信息+收货地址</span></p></li><li><p><span>合法性校验</span></p><ol start='' ><li><p><span>活动是否上线 即缓存有没有</span></p></li><li><p><span>活动是否过期 比较当前时间和商品的过期时间</span></p></li><li><p><span>购买数量是否超出限购数量</span></p></li><li><p><span>用Token校验幂等性</span></p></li></ol></li><li><p><span>获得信号量+扣库存</span></p></li><li><p><span>生成分布式订单号 + 封装订单信息 + 【异步】发送给 RocketMQ + 立即响应</span>
+<span>每秒查一次订单，查到订单之后跳转到支付</span></p></li><li><p><span>【订单服务】监听到消息，快速生成订单（此时用户还未支付）</span>
+<span>异步发送延时消息用来订单超时未支付自动取消，发送失败就重新消费消息</span>
+<span>另一种方案是定时任务扫描，缺点是可能存在较长的延时</span>
+<span>这里只插入订单，不能扣减数据库库存，因为超时未支付恢复库存比较麻烦</span></p></li><li><p><span>支付：支付与修改订单状态应该是一个事务，可以使用分布式事务</span>
+<span>1、更新订单状态为支付中</span>
+<span>2、支付预下单（异常回滚）</span>
+<span>3、支付成功更新订单状态为已支付、失败回滚、无响应就回查</span>
+<span>这里也不能扣减数据库库存，理由同上，会阻塞</span>
+<span>定时任务扫描支付成功的订单扣减数据库库存</span></p></li></ol><h2 id='🥈高可用问题'><span>🥈高可用问题</span></h2><p><span>如果用 Redis 来做限流+快速响应，RocketMQ 异步生成订单</span>
+<span>1、单节点的 Redis 会挂</span>
+<span>2、使用哨兵主从：Redis 可能出现主从不一致，导致超卖</span></p><p><strong><span>那怎么做到高可用呢？</span></strong></p><p><span>3、给每个秒杀服务安装一个 Redis，参与秒杀的商品根据ID路由到特定的服务节点处理，即每个服务负担一部分商品的秒杀，即使某个服务或者同机的 Redis 挂掉，也只会影响到一部分商品；缺点是无法做到实时的横向扩展，而且这样做的话秒杀业务的部署就比较复杂了，有必要独立出来，不要影响其他服务</span></p><h2 id='🥈rocketmq相关的问题'><span>🥈RocketMQ相关的问题</span></h2><h3 id='🥉秒杀step5为什么异步发消息'><span>🥉秒杀step5为什么异步发消息</span></h3><p><span>同步可能长时间阻塞，而秒杀应该做到快速响应，因此异步更合适</span></p><p><strong><span>消息发送失败怎么办?</span></strong></p><p><span>即便设置了多次重试依然可能失败</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1684476581082-0b49bb0b-cd36-4750-a5f2-f1a1d475e964.png" alt="img" style="zoom: 80%;" /></p><p><span>最终还是发送失败？相当于下单失败了，需要恢复库存</span></p><h3 id='🥉同步双写vs异步双写'><span>🥉同步双写VS异步双写</span></h3><p><span>选同步双写，保证不会因为主节点宕机影响数据一致性</span></p><h3 id='🥉消息重复发送的问题'><span>🥉消息重复发送的问题</span></h3><p><span>消费者需要做幂等处理</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1684477331236-0007bb36-dcff-4b20-93f6-91fc55698f9c.png" alt="img" style="zoom: 80%;" /></p><h2 id='🥈超卖和少买的问题'><span>🥈超卖和少买的问题</span></h2><p><strong><span>超卖</span></strong></p><p><span>即不能出现最后库存是负数的情况</span></p><p><span>一般的避免超卖的办法</span></p><ol start='' ><li><p><span>悲观锁：加互斥锁，有库存才允许扣减</span></p></li><li><p><span>乐观锁+重试</span></p></li></ol><p><span>在这里利用 Redisson 信号量（LUA脚本实现）做 库存判断+扣库存 本身就是带锁的，因为执行LUA脚本时不会执行其他脚本和 Redis 命令，因此超卖问题不存在</span></p><p><strong><span>少卖</span></strong></p><p><span>取消订单要恢复 Redis 库存</span></p><h1 id='🧧双11红包雨'><span>🧧双11红包雨</span></h1><p><strong><span>功能上就是两个</span></strong></p><ul><li><p><span>发红包：支付 → 创建红包</span></p></li><li><p><span>抢红包：红包是否还有余量？</span></p><ul><li><p><span>抢光了：不让点了</span></p></li><li><p><span>还有：开红包，更新红包记录</span></p></li></ul></li></ul><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/1684390210315-30e2f5f1-706c-441d-bae4-c039372bbcfd.png" alt="img" style="zoom: 80%;" /></p><p><strong><span>数据库表的设计</span></strong></p><p><span>两个表，发红包的流程（插红包表）、抢红包的流程（插红包流水表，更新红包表）</span></p><p><strong><span>初步思考与设计</span></strong></p><p><span>抢红包并发量越大，设计就越复杂，我根据用户量多少给了几个方案</span></p><p><span>假设一个用户抢红包，需要操作数据库耗时20ms，用户能够接受3s的等待抢到红包</span></p><p><span>关键是卡在更新红包表这里，并发场景下为避免超卖，检查库存+扣减库存必须得加锁排队</span></p><p><del><span>如果发放的红包个数是100</span></del><span>，即允许100个人并发更新，耗时就是2s，能够满足需求</span></p><p><del><span>如果红包个数是1000</span></del><span>就难受了</span></p><p><span>优化方案：</span></p><p><span>将一个红包拆成10个子红包，开红包时开一个剩余份数最多的红包，或者通过运算将红包id和用户id绑定</span></p><p><span>降低了锁的粒度，提高了并发量，也就是分流，直流越多，并发量越大</span></p><p><del><span>1000W的并发量怎么办呢？数据库会挂的</span></del></p><p><span>使用数据库扣库存慢，用缓存解决</span></p><p><span>数据一致性问题？</span>
+<span>如果要求强一致就又回到了原点因此不可行，可以先将数据持久化到 MQ（比操作数据库快得多）消费者消费消息保证最终一致性</span></p><p><del><span>由此可见抢红包和秒杀是非常相似的</span></del></p><p><strong><span>以微信红包为例</span></strong></p><p><span>一个红包就相当于一个商品的秒杀</span></p><p><span>以微信的用户量，相当于海量的商品同时参与秒杀，因此并发量比电商平台的商品秒杀要大的多</span></p><p><span>而且微信红包本质上是资金交易，安全级别更高，绝对不允许超卖，少卖（即有红包未被领取）则必须保证精确回款</span></p><p><span>因此如果架构设计能够满足微信红包的业务场景，那么电商平台的商品秒杀也没问题</span></p><p><span>【秒杀】中的架构方案已经可以了，将同一个红包的并发路由到一个特定的服务上即可</span></p><p><strong><span>以支付宝红包雨为例</span></strong></p><p><span>与微信红包不一样的地方是，红包雨就只有一个红包，所有用户参与抢红包</span></p><p><span>因此这个场景下，对于单个红包的并发量方面，要比微信红包大的多得多</span></p><p><span>如果用上面微信红包的解决方案</span></p><ul><li><p><span>假设同时抢红包的人是1000W，单个服务是支撑不住的</span></p></li><li><p><span>而且单个服务可用性不高</span></p></li></ul><p><span>继续优化：把红包雨的一个红包拆成100份（上文中的思路），特定路由分流给100个服务处理</span></p><p><span>缺点：客户端不知道哪个红包还有余量，会出现用户没抢到红包但实际上红包还有剩余的情况</span></p><p><strong><span>用户收到提示红包抢到了，但实际没有到账，可能是下面的两个原因</span></strong></p><p><span>1、Redis 锁库存成功，但是给MQ发消息失败了即数据没有持久化</span>
+<span>2、MQ消息过多消费比较慢</span></p><h1 id='🌐第三方接入服务'><span>🌐第三方接入服务</span></h1><p><span>这个服务集成了所有调用第三方的 API，为其他服务赋能</span></p><h2 id='🥈发送短信'><span>🥈发送短信</span></h2><h2 id='🥈获取阿里云oss防伪签名'><span>🥈获取阿里云OSS防伪签名</span></h2><p><span>前端在上传图片到阿里云之前，调用这个接口获得上传所需的防伪签名，然后直接调用阿里云OSS的接口上传图片和防伪签名</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014084619324.png" referrerpolicy="no-referrer" alt="image-20231014084619324"></p><h2 id='🥈物流能力的接入'><span>🥈物流能力的接入</span></h2><h2 id='🥈支付'><span>🥈支付</span></h2><p><span>统一支付宝和微信的 API</span></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014084426428.png" alt="image-20231014084426428" style="zoom:67%;" /></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014084511315.png" alt="image-20231014084511315" style="zoom:67%;" /></p><p><img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014084548458.png" alt="image-20231014084548458" style="zoom:67%;" /></p></div></div>
+
+<script>(function(){function e(e,n,i){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var t=e.target;t&&t!=this;t=t.parentNode)if(t.matches(n)){!1===i.call(t,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)}var t=document.body.parentElement,i=[],r=null,o=document.body.classList.contains("typora-export-collapse-outline");function a(){return t.scrollTop}e("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),u(),!1}),e("click",".outline-item",function(e){var t=this.querySelector(".outline-label");location.hash="#"+t.getAttribute("href"),o&&((t=this.closest(".outline-item-wrapper").classList).contains("outline-item-open")||t.add("outline-item-open"),d(),t.add("outline-item-active"))});function s(){var e=a();r=null;for(var t=0;t<i.length&&i[t][1]-e<60;t++)r=i[t]}function n(){c=setTimeout(function(){var n;i=[],n=a(),document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(e=>{var t=e.getAttribute("id");i.push([t,n+e.getBoundingClientRect().y])}),s(),u()},300)}var l,c,d=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},u=function(){if(r&&(d(),t=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(r[0]):r[0])+'"]')))if(o){var e=t.closest(".outline-item-open>ul>.outline-item-wrapper");if(e)e.classList.add("outline-item-active");else{for(var t,n=(t=t.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");n;)n=(t=n).parentElement.closest(".outline-item-wrapper");t.classList.add("outline-item-active")}}else t.closest(".outline-item-wrapper").classList.add("outline-item-active")};window.addEventListener("scroll",function(e){l&&clearTimeout(l),l=setTimeout(function(){s(),u()},300)});window.addEventListener("resize",function(e){c&&clearTimeout(c),n()}),n()})();</script></body>
+</html>
