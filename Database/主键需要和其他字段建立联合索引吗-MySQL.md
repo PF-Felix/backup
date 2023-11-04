@@ -6,8 +6,8 @@
 
 个人理解是：主键查询已经足够快了，没有必要使用联合索引
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008103430.png" style="zoom:33%;" />
+<img src="D:\ImageA\20231008103430.png" style="zoom:33%;" />
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008103539.png" style="zoom:50%;" />
+<img src="D:\ImageA\20231008103539.png" style="zoom:50%;" />
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008103609.png" style="zoom: 67%;" />
+<img src="D:\ImageA\20231008103609.png" style="zoom: 67%;" />

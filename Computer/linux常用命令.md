@@ -6,15 +6,15 @@ uniq 可以去重，但仅仅是当相邻的数据重复时才会去重，比如
 
 > 下图中 grep -Po 的意思是是只输出匹配的字符串
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231007095311.png" style="zoom: 43%;" />
+<img src="D:\ImageA\20231007095311.png" style="zoom: 43%;" />
 
 想要得到重复的数量就得使用`uniq -c`，返回信息在 uniq 的结果前面加了一个数字表示数量，如下图
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231007095346.png" style="zoom:43%;" />
+<img src="D:\ImageA\20231007095346.png" style="zoom:43%;" />
 
 格式化的输出导致数字前面可能有空格，可以用`uniq -c | sed 's/^[[:space:]]*//'`去掉前面的空格
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008112302.png" style="zoom:50%;" />
+<img src="D:\ImageA\20231008112302.png" style="zoom:50%;" />
 
 # grep匹配文本内容
 
@@ -26,7 +26,7 @@ grep "\[Frequency\]\[parse_success\]" /home/iiot/parse/log/*.parse.20230828.log
 
 上面语句能匹配到下面的日志：
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/image-20231014074516889.png" style="zoom: 43%;" />
+<img src="D:\ImageA\image-20231014074516889.png" style="zoom: 43%;" />
 
 **特殊符号的处理**
 
@@ -43,11 +43,11 @@ grep -Po "'sid'\s*:\s*'\K[^']+"
 grep -Po '"sid"\s*:\s*"\K[^']+'
 ```
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008112335.png" style="zoom:50%;" />
+<img src="D:\ImageA\20231008112335.png" style="zoom:50%;" />
 
 最后只输出匹配到的字符串如下：
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008112450.png" style="zoom:40%;" />
+<img src="D:\ImageA\20231008112450.png" style="zoom:40%;" />
 
 # 查看文件
 

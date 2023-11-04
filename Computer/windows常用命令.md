@@ -13,4 +13,4 @@ netstat -ano | findstr 80
 taskkill /f /t /im 12660
 ```
 
-<img src="https://raw.githubusercontent.com/PF-Felix/ImageA/main/20231008104016.png" style="zoom:40%;" />
+<img src="D:\ImageA\20231008104016.png" style="zoom:40%;" />
