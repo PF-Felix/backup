@@ -4,9 +4,9 @@ https://www.cnblogs.com/Java-Road/p/16916470.html
 
 # 设置优化
 
-| <img src="D:\ImageA\20231008105443.png" style="zoom:33%;" /> | <img src="D:\ImageA\20231008105532.png" style="zoom:30%;" /> | <img src="D:\ImageA\20231008105550.png" style="zoom:33%;" /> |
+| <img src="C:\ImageA\20231008105443.png" style="zoom:33%;" /> | <img src="C:\ImageA\20231008105532.png" style="zoom:30%;" /> | <img src="C:\ImageA\20231008105550.png" style="zoom:33%;" /> |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <img src="D:\ImageA\20231008105606.png" style="zoom:35%;" /> | <img src="D:\ImageA\20231008105623.png" style="zoom:33%;" /> |                                                              |
+| <img src="C:\ImageA\20231008105606.png" style="zoom:35%;" /> | <img src="C:\ImageA\20231008105623.png" style="zoom:33%;" /> |                                                              |
 
 # 常用插件
 
@@ -15,7 +15,7 @@ https://www.cnblogs.com/Java-Road/p/16916470.html
 | Java Stream Debugger                                         | 自带有                                                       |
 | EasyCode                                                     | 生成 MyBatis 需要的代码                                      |
 | MyBatisX                                                     | mapper 接口与 xml 的跳转；生成 MyBatis 需要的代码            |
-| <img src="D:\ImageA\20231008105637.png" style="zoom:15%;" /> | <img src="D:\ImageA\20231008105656.png" style="zoom:33%;" /> |
+| <img src="C:\ImageA\20231008105637.png" style="zoom:15%;" /> | <img src="C:\ImageA\20231008105656.png" style="zoom:33%;" /> |
 
 # 快捷键
 

@@ -1,18 +1,18 @@
 # 加锁
 
-<img src="D:\ImageA\20231008105717.png" style="zoom:33%;" />
+<img src="C:\ImageA\20231008105717.png" style="zoom:33%;" />
 
-<img src="D:\ImageA\20231008105733.png" style="zoom:39%;" />
+<img src="C:\ImageA\20231008105733.png" style="zoom:39%;" />
 
 根据上图，**公平锁和非公平锁**唯一的区别就在这里：
 - 非公平锁：无论何时都不会先排队，而是直接尝试 CAS 竞争锁
 - 公平锁：队列不空就先排队，队列为空才会尝试 CAS 竞争锁
 
-<img src="D:\ImageA\20231008105752.png" style="zoom:50%;" />
+<img src="C:\ImageA\20231008105752.png" style="zoom:50%;" />
 
 相关的详细代码如下：
 
-<img src="D:\ImageA\20231008105805.png" style="zoom:67%;" />
+<img src="C:\ImageA\20231008105805.png" style="zoom:67%;" />
 
 ```java
 //如果没有获得锁，addWaiter(Node.EXCLUSIVE)，将当前线程封装为Node节点，插入到AQS的双向链表的结尾
@@ -74,6 +74,6 @@ public static void park(Object blocker) {
 
 # 解锁
 
-<img src="D:\ImageA\20231008105824.png" style="zoom:40%;" />
+<img src="C:\ImageA\20231008105824.png" style="zoom:40%;" />
 
-<img src="D:\ImageA\20231008105841.png" style="zoom:56%;" />
+<img src="C:\ImageA\20231008105841.png" style="zoom:56%;" />
