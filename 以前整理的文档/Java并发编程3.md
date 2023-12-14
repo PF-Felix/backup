@@ -1,0 +1,751 @@
+
+
+# volatile与锁
+
+> 标签：并发编程的三大特性
+
+并发编程中的三个问题：原子性问题，可见性问题，有序性问题
+
+volatile可以【保证可见性】和【禁止指令重排】
+
+==原子性==
+即一个操作或多个操作，要么全部执行，要么全部不执行
+经典例子1：银行转账问题，从账户A减去1000元，往账户B加上1000元
+经典例子2：i++
+JMM只保证了基本读取和赋值的原子性，更大范围操作的`原子性可以通过锁保证，volatile无法保证原子性`
+
+==可见性==
+多个线程访问同一个变量时，一个线程修改了这个变量的值，其他线程能够立即看得到修改的值
+`volatile关键字可以保证可见性；锁也能`，但是 volatile 更加轻量，不用切换线程上下文
+volatile 利用内存屏障解决可见性问题，而且内存屏障能禁止重排序，`volatile一定程度上能保证有序性`
+PS：硬件层面已经实现了《标签：缓存一致性协议》，这里用内存屏障是为了解决 StoreBuffer 的问题
+
+==有序性==
+即程序执行的顺序按照代码的先后顺序执行
+JMM在单线程中通过单线程语义保证有序性，多线程中保证 happens-before 原则范围内的有序性
+`锁能保证有序性`
+
+## volatile VS synchronized
+
+### volatile的内存语义
+
+> volatile 的读内存语义：当读一个 volatile 变量时，JMM 将该线程对应的本地内存置为无效，从主内存中读取变量
+> volatile 的写内存语义：当写一个 volatile 变量时，JMM 将该线程对应的本地内存中的共享变量值刷新到主内存
+
+实现原理是使用内存屏障
+
+> 在每个 volatile 写操作前插入 StoreStore 屏障，后插入 StoreLoad 屏障
+> 在每个 volatile 读操作后插入 LoadLoad 屏障，后插入 LoadStore 屏障
+
+PS：这里的内存屏障是 JVM 层面的，并非操作系统层面的，但是本质上还是使用操作系统的内存屏障
+
+> 写内存屏障：促使处理器将当前 StoreBuffer 的值写回主存
+> 读内存屏障：促使处理器处理 InvalidateQueue，避免 StoreBuffer 和 InvalidateQueue 的非实时性带来的问题
+
+![image-20230405150552642](D:\markdown-image\image-20230405150552642.png)
+
+内存屏障会限制重排序：
+
+> 限制 volatile 变量之间的重排序
+> 限制 volatile 变量与普通变量之间的重排序
+
+![image-20230405150813921](D:\markdown-image\image-20230405150813921.png)
+
+![image-20230405150822366](D:\markdown-image\image-20230405150822366.png)
+
+### 锁的内存语义
+
+> 线程释放锁前，JMM 将共享变量的最新值刷新到主内存中
+> 线程获取锁时，JMM 将线程对应的本地内存置为无效，需要共享变量的时候必须去主内存中读取，同时保存在本地内存
+> 可以看出，锁释放和 volatile 写具有相同的内存语义；锁获取和 volatile 读具有相同的内存语义
+
+==实现原理==
+
+内置锁（synchronized）
+
+> 同步块：编译器会在同步块的入口位置和退出位置分别插入 monitorenter 和 monitorexit 字节码指令
+> 同步方法：编译器会在 Class 文件的方法表中将该方法的 access_flags 字段中的 synchronized 标志位置 1，表示该方法是同步方法并使用调用该方法的对象
+
+显式锁-以 ReentrantLock 公平锁为例
+
+> 加锁：首先会调用 getState() 方法读 volatile 变量 state
+> 解锁：setState(int newState) 方法写 volatile 变量 state
+
+显式锁-以 ReentrantLock 非公平锁为例
+
+> 加锁：首先会使用 CAS 更新 volatile 变量 state，更新不成功再去采用公平锁的方式（CAS保证了原子性）
+> 解锁：setState(int newState) 方法写 volatile 变量 state
+
+## 锁优化
+
+==减小锁的粒度==
+
+比如 ConcurrentHashMap 只锁数组的某个元素所在链表
+
+==使用读写锁==
+
+比如 ReentrantReadWriteLock
+
+==读写分离==
+
+CopyOnWriteArrayList
+
+## 锁的种类
+
+==公平锁、非公平锁==
+
+synchronized 是非公平锁
+ReentrantLock、ReentrantReadWriteLock 可以实现公平锁和非公平锁
+
+==悲观锁、乐观锁==
+
+悲观锁：拿不到锁就阻塞等待；synchronized、ReentrantLock、ReentrantReadWriteLock 都是悲观锁
+乐观锁：拿不到锁不阻塞，可以继续做别的事情；CAS 是乐观锁的一种实现
+
+==可重入锁、不可重入锁==
+
+==互斥锁、共享锁==
+
+## ReentrantLock
+
+### Condition
+
+lock.newCondition() 得到的对象，提供了 await 和 signal 方法实现了类似 wait 和 notify 的功能
+想执行 await、signal 就必须先持有 lock 锁
+
+await：
+1、将当前线程封装成 Node 添加到 Condition 单向链表中
+2、当前线程释放锁 Node 脱离 AQS 双向链表
+
+signal：
+1、脱离 Condition 单向链表
+2、Node 加入 AQS 双向链表
+
+## ReentrantReadWriteLock
+
+比 ReentrantLock 效率高
+读读之间不互斥，可以读和读操作并发执行
+涉及到了写操作就是互斥的
+
+基于 AQS 实现，对 state 进行操作，读锁基于 state 的高16位进行操作，写锁基于 state 的低16位进行操作
+
+# 并发集合
+
+## ConcurrentHashMap
+
+存储结构：数组+链表+红黑树
+
+通过 CAS 和 synchronized 互斥锁实现的==线程安全==
+CAS：在没有hash冲突时（Node要放在数组上时）
+synchronized：在出现hash冲突时（Node存放的位置已经有数据了）
+
+### HashMap线程不安全的原因
+
+在 Java7 中，并发执行扩容操作时会造成环形链表和数据丢失的情况
+在 Java8 中，并发执行put操作时会发生数据覆盖的情况
+
+### HashMap VS HashTable VS ConcurrentHashMap
+
+| 对比点           | HashMap    | HashTable                                        | ConcurrentHashMap |
+| ---------------- | ---------- | ------------------------------------------------ | ----------------- |
+| 线程安全性       | 非线程安全 | 线程安全                                         | 线程安全          |
+| 是否允许KV为null | 允许       | 不允许                                           | 不允许            |
+| 其他             |            | HashTable锁粒度太粗，没有ConcurrentHashMap性能好 | 建议替代HashTable |
+
+### HashMap VS ConcurrentHashMap
+
+> 先参考上个章节
+
+存储结构一样，都是数组+链表+红黑树
+
+链表转换为红黑树的时机一样，都是链表长度>=8
+红黑树转换为链表的时机一样，都是树上节点数量<=6
+
+扩容都是变为原来的两倍
+
+扩容时机不一样：
+
+- ConcurrentHashMap：链表长度>=8且数组长度<64 或 当前元素个数大于等于扩容阈值即数组长度（满了再扩容）
+- HashMap：元素个数超过负载因子与容量的乘积，负载因子用来衡量何时自动扩容
+  例如负载因子默认为 0.75（意味着元素数量达到当前容量的的 3/4 时扩容）
+
+### TreeMap
+
+支持根据 key 自定义排序（默认升序），key 必须实现 Comparable 接口或者在构造方法传入自定义的 Comparator
+
+### put
+
+返回值是 put 之前 key 的 value
+put 会覆盖原值，putIfAbsent 不会
+
+```java
+public V put(K key, V value) {
+    return putVal(key, value, false);
+}
+
+public V putIfAbsent(K key, V value) {
+    return putVal(key, value, true);
+}
+```
+
+#### 添加数据到数组
+
+```java
+final V putVal(K key, V value, boolean onlyIfAbsent) {
+    //不允许key或者value出现null（HashMap 支持 null value 与 null key）
+    if (key == null || value == null) throw new NullPointerException();
+
+    //(h ^ (h >>> 16)) & HASH_BITS; HashMap中没有HASH_BITS
+    //h ^ (h >>> 16) 是扰动计算，目的是尽量使元素分布均匀减少 hash 碰撞，下面举例说明
+    //    假设数组的初始化容量为16即10000，length-1=15即1111
+    //    假设几个对象的 hashCode 为 1100 10010、1110 10010、11101 10010，不做扰动计算将发生 hash 碰撞（取模值相等）
+    //HASH_BITS = ‭01111111111111111111111111111111‬
+    //HASH_BITS 让 hash 的最高位肯定为0代表正数（其他位不变），因为 hash 值为负数时有特殊的含义
+    //static final int MOVED     = -1; //代表当前位置正在扩容
+    //static final int TREEBIN   = -2; //代表当前位置是一棵红黑树
+    //static final int RESERVED  = -3; // hash for transient reservations
+    int hash = spread(key.hashCode());
+
+    int binCount = 0;
+    for (Node<K,V>[] tab = table;;) {
+        //n：数组长度
+        //i：索引位置
+        //f：i索引位置的Node对象
+        //fh：i索引位置上数据的hash值
+        Node<K,V> f; int n, i, fh;
+
+        //需要的话先初始化数组
+        if (tab == null || (n = tab.length) == 0)
+            tab = initTable();
+
+        //（取模运算）定位元素在数组哪个索引：hash & (length -1)，运算结果最大值为 length -1，不会出现数组下标越界的情况
+        //如果这个位置没有数据，就把数据放在这个位置（CAS）
+        else if ((f = tabAt(tab, i = (n - 1) & hash)) == null) {
+            if (casTabAt(tab, i, null, new Node<K,V>(hash, key, value, null)))
+                break;
+        }
+
+        //如果索引位置有数据，且正在扩容，就协助扩容
+        else if ((fh = f.hash) == MOVED)
+            tab = helpTransfer(tab, f);
+
+        //索引位置有数据，且没有在扩容，把元素插入链表或红黑树，加锁，互斥锁锁住一个索引，其他索引可以正常访问
+        //然后如果链表长度>=8，转化为红黑树或扩容
+        else {
+            V oldVal = null;
+            synchronized (f) {
+                if (tabAt(tab, i) == f) {
+                    //（元素的hash>=0）遍历链表添加元素
+                    if (fh >= 0) {
+                        binCount = 1; //...遍历期间binCount++
+                    }
+                    
+                    //如果fh<0（元素的hash<0），且索引位置是红黑树，向树中插入元素
+                    else if (f instanceof TreeBin) {
+                        Node<K,V> p;
+                        binCount = 2;
+                        if ((p = ((TreeBin<K,V>)f).putTreeVal(hash, key, value)) != null) {
+                            oldVal = p.val;
+                            if (!onlyIfAbsent)
+                                p.val = value;
+                        }
+                    }
+                }
+            }
+            if (binCount != 0) {
+                //链表长度>=8，转为红黑树或扩容
+                //为何是8？根据泊松分布，链表长度到8的概率非常低，源码中是0.00...6，尽量在避免生成红黑树使写入成本过高
+                //            数组长度<64，扩容，容量翻倍
+                //            数组长度>=64，转为红黑树
+                if (binCount >= TREEIFY_THRESHOLD)
+                    treeifyBin(tab, i);
+                if (oldVal != null)
+                    return oldVal;
+                break;
+            }
+        }
+    }
+    
+    //数量+1 且判断是否需要扩容
+    addCount(1L, binCount);
+    return null;
+}
+```
+
+#### 初始化
+
+```java
+//sizeCtl：是数组在初始化和扩容操作时的一个控制变量
+//0：代表数组还没初始化
+//大于0：代表当前数组的扩容阈值，或者是当前数组的初始化大小
+//-1：代表当前数组正在初始化
+//小于-1：低16位代表当前数组正在扩容的线程个数（如果1个线程扩容，值为-2，如果2个线程扩容，值为-3）
+private final Node<K,V>[] initTable() {
+    Node<K,V>[] tab; int sc;
+    while ((tab = table) == null || tab.length == 0) {
+        if ((sc = sizeCtl) < 0)
+            Thread.yield();
+
+        //CAS将SIZECTL改为-1，尝试初始化
+        else if (U.compareAndSwapInt(this, SIZECTL, sc, -1)) {
+            try {
+                if ((tab = table) == null || tab.length == 0) {
+                    //如果sizeCtl > 0 就初始化sizeCtl长度的数组；如果sizeCtl == 0，就初始化默认的长度16
+                    int n = (sc > 0) ? sc : DEFAULT_CAPACITY;
+                    Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n];
+                    table = tab = nt;
+                    //将sc赋值为下次扩容的阈值
+                    sc = n - (n >>> 2);
+                }
+            } finally {
+                //sizeCtl为下次扩容的阈值
+                sizeCtl = sc;
+            }
+            break;
+        }
+    }
+    return tab;
+}
+```
+
+#### treeifyBin
+
+```java
+private final void treeifyBin(Node<K,V>[] tab, int index) {
+    Node<K,V> b; int n, sc;
+    if (tab != null) {
+        if ((n = tab.length) < MIN_TREEIFY_CAPACITY)
+            tryPresize(n << 1);
+
+        //转红黑树需要加锁
+        else if ((b = tabAt(tab, index)) != null && b.hash >= 0) {
+            synchronized (b) {
+                //省略一大段代码
+            }
+        }
+    }
+}
+
+private final void tryPresize(int size) {
+    int c = (size >= (MAXIMUM_CAPACITY >>> 1)) ? MAXIMUM_CAPACITY :
+    tableSizeFor(size + (size >>> 1) + 1);
+    int sc;
+
+    //数组没有在初始化，也没有在扩容
+    while ((sc = sizeCtl) >= 0) {
+        Node<K,V>[] tab = table; int n;
+
+        //初始化，同上
+        if (tab == null || (n = tab.length) == 0) {
+            //省略
+        }
+
+        //容量已经到了最大，就不扩容了
+        else if (c <= sc || n >= MAXIMUM_CAPACITY)
+            break;
+
+        //扩容，帮助其他线程扩容 或 自己扩容
+        else if (tab == table) {
+            int rs = resizeStamp(n);
+            if (sc < 0) {
+                Node<K,V>[] nt;
+                //判断是否可以协助扩容
+                if ((sc >>> RESIZE_STAMP_SHIFT) != rs || sc == rs + 1 ||
+                    sc == rs + MAX_RESIZERS || (nt = nextTable) == null ||
+                    transferIndex <= 0)
+                    break;
+                //sizeCtl+1，表示扩容的线程数量+1，并协助扩容
+                if (U.compareAndSwapInt(this, SIZECTL, sc, sc + 1))
+                    transfer(tab, nt);
+            }
+
+            //自己扩容，sizeCtl+2，表示当前有一个线程在扩容
+            else if (U.compareAndSwapInt(this, SIZECTL, sc, (rs << RESIZE_STAMP_SHIFT) + 2))
+                transfer(tab, null);
+        }
+    }
+}
+```
+
+#### addCount
+
+```java
+private final void addCount(long x, int check) {
+    CounterCell[] as; long b, s;
+    //不重要
+    if ((as = counterCells) != null ||
+        !U.compareAndSwapLong(this, BASECOUNT, b = baseCount, s = b + x)) {
+        //省略一大段代码
+    }
+
+    if (check >= 0) {
+        Node<K,V>[] tab, nt; int n, sc;
+        //当前元素个数大于等于扩容阈值，且数组不为null，且数组长度没有达到最大值，协助其他线程扩容或自己扩容
+        while (s >= (long)(sc = sizeCtl) && (tab = table) != null && (n = tab.length) < MAXIMUM_CAPACITY) {
+            int rs = resizeStamp(n);
+            //省略一段和 tryPresize 一样的代码
+            s = sumCount();
+        }
+    }
+}
+```
+
+#### 扩容
+
+支持多线程并发扩容
+
+触发扩容的三个点：
+
+- 链表转红黑树前，会判断是否需要扩容
+- addCount 方法中，如果元素数量超过阈值，触发扩容
+- putAll 方法中，根据传入的 map.size 判断是否需要扩容
+
+```java
+//tab：老数组
+//nextTab：新数组
+private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
+    int n = tab.length, stride;
+
+    //基于CPU内核数计算每个线程一次性迁移多少数据
+    //每个线程迁移数组长度最小值是MIN_TRANSFER_STRIDE=16
+    if ((stride = (NCPU > 1) ? (n >>> 3) / NCPU : n) < MIN_TRANSFER_STRIDE)
+        stride = MIN_TRANSFER_STRIDE;
+
+    //没有新数组的话，创建一个容量翻倍的新数组
+    if (nextTab == null) {
+        try {
+            Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n << 1];
+            nextTab = nt;
+        } catch (Throwable ex) {
+            sizeCtl = Integer.MAX_VALUE;
+            return;
+        }
+        nextTable = nextTab;
+
+        //扩容总进度，>=transferIndex的索引都已分配出去
+        transferIndex = n;
+    }
+    int nextn = nextTab.length;
+    ForwardingNode<K,V> fwd = new ForwardingNode<K,V>(nextTab); //MOVED节点
+    boolean advance = true;
+    boolean finishing = false; // to ensure sweep before committing nextTab
+    for (int i = 0, bound = 0;;) {
+        Node<K,V> f; int fh;
+        while (advance) {
+            int nextIndex, nextBound;
+
+            //第一次循环不会进来
+            //之后领取了任务之后就可以进来了，按索引顺序从后往前一个个处理
+            if (--i >= bound || finishing)
+                advance = false;
+
+            //transferIndex <=0 表示所有索引都迁移完成
+            else if ((nextIndex = transferIndex) <= 0) {
+                i = -1;
+                advance = false;
+            }
+
+            //当前线程尝试领取任务，领取一段数组的数据迁移
+            else if (U.compareAndSwapInt(this, TRANSFERINDEX, nextIndex,
+                      nextBound = (nextIndex > stride ? nextIndex - stride : 0))) {
+                bound = nextBound;
+                //标记索引位置
+                i = nextIndex - 1;
+                advance = false;
+            }
+        }
+
+        //i < 0，即线程没有接收到任务，扩容线程数量-1，结束扩容操作
+        if (i < 0 || i >= n || i + n >= nextn) {
+            int sc;
+            if (finishing) {
+                nextTable = null;
+                table = nextTab;
+                sizeCtl = (n << 1) - (n >>> 1);
+                return;
+            }
+            if (U.compareAndSwapInt(this, SIZECTL, sc = sizeCtl, sc - 1)) {
+                if ((sc - 2) != resizeStamp(n) << RESIZE_STAMP_SHIFT)
+                    return;
+                finishing = advance = true;
+                i = n; // recheck before commit
+            }
+        }
+
+        //如果当前索引位置没数据，无需迁移，标记为MOVED
+        else if ((f = tabAt(tab, i)) == null)
+            advance = casTabAt(tab, i, null, fwd);
+
+        //如果当前索引位置的 hash 是 MOVED，表示已经迁移过了
+        else if ((fh = f.hash) == MOVED)
+            advance = true;
+
+        //迁移数据，将 oldTable 的数据迁移到 newTable，加锁
+        else {
+            synchronized (f) {
+                if (tabAt(tab, i) == f) {
+                    Node<K,V> ln, hn;
+
+                    //正常情况，链表
+                    if (fh >= 0) {
+                        //运算结果是0或n：比如16（即10000）&任何hash 只有10000（hash=X1XXXX）和0（hash=X0XXXX）两种结果
+                        //hash&15（即01111）的结果是A
+                        //hash&31（即11111）的结果是B
+                        //A和B只有两种情况：A==B（hash=X0XXXX） 或者 A+16==B（hash=X1XXXX）
+                        //因此扩容后索引位置不变 或 索引位置+n
+                        int runBit = fh & n;
+                        Node<K,V> lastRun = f;
+
+                        //找出最后一段 hash&n 连续不变的链表
+                        //    即从 lastRun 开始后面的这一段数据就不用重新创建节点了，前面的数据还需要创建节点
+                        //runBit == 0 表示扩容前后索引位置不变，其他情况表示索引位置需要变动
+                        for (Node<K,V> p = f.next; p != null; p = p.next) {
+                            //这里也是0或n
+                            int b = p.hash & n;
+                            if (b != runBit) {
+                                runBit = b;
+                                lastRun = p;
+                            }
+                        }
+                        if (runBit == 0) {
+                            ln = lastRun;
+                            hn = null;
+                        }
+                        else {
+                            hn = lastRun;
+                            ln = null;
+                        }
+
+                        //lastRun 之前的结点重新创建节点
+                        for (Node<K,V> p = f; p != lastRun; p = p.next) {
+                            int ph = p.hash; K pk = p.key; V pv = p.val;
+                            if ((ph & n) == 0)
+                                ln = new Node<K,V>(ph, pk, pv, ln);
+                            else
+                                hn = new Node<K,V>(ph, pk, pv, hn);
+                        }
+                        //低位链表
+                        setTabAt(nextTab, i, ln);
+                        //高位链表
+                        setTabAt(nextTab, i + n, hn);
+                        //设置当前索引为MOVED
+                        setTabAt(tab, i, fwd);
+                        advance = true;
+                    }
+
+                    //红黑树
+                    else if (f instanceof TreeBin) {
+                        //忽略一大段代码
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+## CopyOnWriteArrayList
+
+是线程安全的 ArrayList
+
+写数据时加锁，同时复制一个数组的副本，写这个副本，完成写之后再用副本替换掉原数组；写操作不影响读操作
+
+初始长度是0
+
+使用迭代器做写操作会抛异常
+
+# 并发工具类
+
+## CountDownLatch
+
+核心实现就是一个计数器
+
+模拟有三个任务需要并行处理，在三个任务全部处理完毕后，再执行后续操作
+
+执行 await 方法，判断 state 是否为0，如果为0直接执行后续任务，如果不为0插入到AQS的双向链表并挂起线程
+
+执行 countDown 方法，代表一个任务结束，计数器减1，如果计数器变为0就唤醒阻塞的线程
+
+![image-20230423013820926](D:\markdown-image\image-20230423013820926.png)
+
+PS：CountDownLatch 的工作用 join 也可以做到
+
+```java
+public class JoinTest {
+    public static void main(String[] args) throws InterruptedException {
+        Thread parser1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("部件一生产完成");
+            }
+        });
+
+        Thread parser2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("部件二生产完成");
+            }
+        });
+
+        parser1.start();
+        parser2.start();
+        parser1.join();
+        parser2.join();
+        System.out.println("机器人组装完毕");
+    }
+}
+
+public class CountDownLatchTest {
+    static CountDownLatch c = new CountDownLatch(2);
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("部件1生产完成");
+                c.countDown();
+                System.out.println("部件2生产完成");
+                c.countDown();
+            }
+        }).start();
+
+        c.await();
+        System.out.println("机器人组装完成");
+    }
+}
+```
+
+输出：
+
+```
+部件一生产完成
+部件二生产完成
+机器人组装完毕
+```
+
+join() 将调用者合并入当前线程，当前线程等待 join 线程执行结束
+
+## CyclicBarrier
+
+原理：多个线程等待，直到线程数量达到临界点再继续执行
+
+1. 构造函数中传入的参数为线程数量
+1. 调用 await 方法的线程进入阻塞状态
+1. 最后一个线程调用 await 方法会唤醒其他所有阻塞线程
+
+PS：CountDownLatch 的计数器只能设置一次，而 CyclicBarrier 的计数器可以使用 reset() 方法重置
+
+## Semaphore
+
+通常使用 Semaphore 限制同时并发的线程数量
+
+线程执行操作时先通过 acquire 方法获得许可（计数器不为0，计数器减1），执行完毕再通过 release 方法释放许可（计数器加1）
+如果无可用许可（计数器为0），acquire 方法将一直阻塞，直到其它线程释放许可
+
+很像线程池，但线程池的线程数量是一定的可复用，Semaphore 并没有复用
+
+
+
+# 异步编程
+
+## FutureTask
+
+FutureTask 是一个异步任务的类，一般配合 Callable 使用，可以取消任务，查看任务是否完成，获取任务的返回结果
+
+状态流转：
+
+```java
+/**
+ * NEW -> COMPLETING -> NORMAL           任务正常执行，并且返回结果也正常返回
+ * NEW -> COMPLETING -> EXCEPTIONAL      任务正常执行，但是结果是异常
+ * NEW -> CANCELLED                      任务被取消
+ * NEW -> INTERRUPTING -> INTERRUPTED    任务被中断
+ */
+//记录任务的状态
+private volatile int state;
+//任务被构建之后的初始状态
+private static final int NEW          = 0;
+private static final int COMPLETING   = 1;
+private static final int NORMAL       = 2;
+private static final int EXCEPTIONAL  = 3;
+private static final int CANCELLED    = 4;
+private static final int INTERRUPTING = 5;
+private static final int INTERRUPTED  = 6;
+```
+
+# !!!
+
+# 什么是线程上下文切换
+
+不同的线程切换使用CPU就是上下文切换
+
+# 如何保证线程安全性
+
+锁、volatile、CAS、原子类（atomic）、线程安全的类
+
+# CAS
+
+是一种乐观锁，能保证对一个变量的替换是原子性的
+
+缺点：
+
+- 无法保证多个变量的原子性
+  解决方案可以是 ReentrantLock 锁（AQS）基于 volatile 和 CAS 实现
+  可以使用 AtomicReference 将多个变量放到一个对象中操作
+- ABA问题：可以引入版本号来解决，有一个这样的实现 AtomicStampeReference
+- 长时间自旋不成功浪费 CPU：控制好自旋的次数
+
+# AQS
+
+## 介绍
+
+AQS 是一个抽象类
+ReentrantLock、ThreadPoolExecutor、阻塞队列、CountDownLatch、Semaphore、CyclicBarrier 都是基于AQS实现
+
+AQS 的核心实现：
+
+- 一个 volatile 修饰的 int 类型的 state 变量（基于 CAS 修改），解决并发编程的三大问题：原子性、可见性、有序性
+- 一个存储阻塞线程的双向链表，如果一个线程获取不到资源就会封装成一个 Node 对象并放入这个链表中
+
+如果面试问到了这个问题，可以扩展谈谈 ReentrantLock
+
+## 为什么用双向链表
+
+是为了方便操作
+
+线程在排队期间是可以取消的，取消某个节点需要将前继节点的 next 指向后继节点
+如果是单向链表，只能找到前继节点或后继节点其中一个，要找到另一个需要遍历整个链表，这样效率低
+所以采用双向链表的结构
+
+## 为什么有一个虚拟的head节点
+
+只是为了方便操作，没有虚拟head节点也可以实现 AQS
+
+# ReentrantLock释放锁时为什么要从后往前找有效节点
+
+因为线程排队加入链表不是原子性的（addWaiter 方法）
+
+1. 将当前节点的前置节点指向 tail 代表的节点
+2. CAS 将 tail 指向当前节点
+3. 将前置节点的后继节点指向当前节点
+
+如果从前往后遍历，此时恰好有个节点排队入链表尾部，很可能遍历的时候把这个节点漏掉（从后往前没有这个问题）
+
+# ConcurrentHashMap
+
+## lastRun机制
+
+## 数组长度为什么是2的n次幂
+
+> 同HashMap
+
+为了数据分布均匀，如果数组长度不是2的n次幂，会破坏咱们散列算法，导致hash冲突增加
+
+还会破坏后面很多的算法，比如lastRun机制
+
+## 如何保证数组初始化线程安全
+
+使用了 DCL（双重检查锁）
+
+锁的实现是基于 CAS 的，初始化数组时，CAS 将 sizeCt 改为负1
+
+外层 while 循环判断数组未初始化，基于 CAS 加锁，然后在内层再次判断数组未初始化

@@ -176,7 +176,7 @@ web,host=host2,region=us_west firstByte=15.0 1559260800000000001
 
 OSS 的这些操作是不支持下推的。
 
-<img src="D:\temporary\assets\image-20230913115454673.png" alt="image-20230913115454673" style="zoom:33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230913115454673.png" alt="image-20230913115454673" style="zoom:33%;" />
 
 避免在 filter 中做计算 TODO
 
@@ -219,9 +219,9 @@ data
     |> map(fn: (r) => ({ r with foo: r.bar }))
 ```
 
-<img src="D:\temporary\assets\image-20230913135342629.png" alt="image-20230913135342629" style="zoom: 33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230913135342629.png" alt="image-20230913135342629" style="zoom: 33%;" />
 
-<img src="D:\temporary\assets\image-20230913135504642.png" alt="image-20230913135504642" style="zoom:33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230913135504642.png" alt="image-20230913135504642" style="zoom:33%;" />
 
 # 哈哈
 
@@ -253,7 +253,7 @@ Series：具有相同 measurement、标签键和标签值的一组点。一组�
 
 如下
 
-<img src="D:\temporary\assets\image-20230911094547215.png" alt="image-20230911094547215" style="zoom:50%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911094547215.png" alt="image-20230911094547215" style="zoom:50%;" />
 
 webUI 界面：localhost：8086
 
@@ -265,7 +265,7 @@ webUI 界面：localhost：8086
 
 安装先跳过：
 
-<img src="D:\temporary\assets\image-20230911095129006.png" alt="image-20230911095129006" style="zoom:33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911095129006.png" alt="image-20230911095129006" style="zoom:33%;" />
 
 
 
@@ -273,9 +273,9 @@ webUI 界面：localhost：8086
 
 行协议
 
-<img src="D:\temporary\assets\image-20230911095619777.png" alt="image-20230911095619777" style="zoom:50%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911095619777.png" alt="image-20230911095619777" style="zoom:50%;" />
 
-<img src="D:\temporary\assets\image-20230911095432464.png" alt="image-20230911095432464" style="zoom: 33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911095432464.png" alt="image-20230911095432464" style="zoom: 33%;" />
 
 ```
 home,room=Living\ Room temp=21.1,hum=35.9,co=0i 1641024000
@@ -316,7 +316,7 @@ group() 空的 group 可以取消默认分组。将数据打平
 
 取消分组时，数据将在单个表中返回。
 
-<img src="D:\temporary\assets\image-20230911101746960.png" alt="image-20230911101746960" style="zoom:40%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911101746960.png" alt="image-20230911101746960" style="zoom:40%;" />
 
 
 
@@ -324,21 +324,21 @@ pivot() 类似于行转列
 
 仪表盘也先不看了。
 
-<img src="D:\temporary\assets\image-20230911103921902.png" alt="image-20230911103921902" style="zoom:35%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911103921902.png" alt="image-20230911103921902" style="zoom:35%;" />
 
 这里也是先不看了。
 
-<img src="D:\temporary\assets\image-20230911104841030.png" alt="image-20230911104841030" style="zoom:33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230911104841030.png" alt="image-20230911104841030" style="zoom:33%;" />
 
 只有 OSS 版本是免费的，集群版本和 Cloud 版本是收费的。
 
-![image-20230910094006740](D:\temporary\assets\image-20230910094006740.png)
+![image-20230910094006740](D:\temporary\image-20230910094006740.png)
 
 日志结构化合并树 LSM
 
 不支持事务、删除、更新，只能插入和查询
 
-![image-20230910145009759](D:\temporary\assets\image-20230910145009759.png)
+![image-20230910145009759](D:\Felix\快速笔记\assets\image-20230910145009759.png)
 
 
 
@@ -348,7 +348,7 @@ temperature1,location=room1 value=15.5,xxde="qwww" 1694217550000000000
 
 # 谓词下推
 
-<img src="D:\temporary\assets\image-20230909131928382.png" alt="image-20230909131928382" style="zoom:50%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230909131928382.png" alt="image-20230909131928382" style="zoom:50%;" />
 
 # insert...into...select...from
 
@@ -407,7 +407,7 @@ Time Series Index (TSI)
 
 我们每天有一个分片。,这样以后删除旧数据就更有。效率了
 
-<img src="D:\temporary\assets\image-20230915003053502.png" alt="image-20230915003053502" style="zoom:33%;" />
+<img src="D:\Felix\快速笔记\assets\image-20230915003053502.png" alt="image-20230915003053502" style="zoom:33%;" />
 
 所以Lsm树的一个问题是删除删除非常昂贵。所以当你进行删除时，实际上是将一个逻辑删除写入磁盘。然后稍后，当你查询时。你必须使用逻辑删除解析数据库中的键，才能实际返回真正的结果。然后稍后，将运行压缩过程，将您的SS表重写为。要删除那个记录，对吧，基本上删除单个记录，最终会重写一堆其他记录，这可能会变得很昂贵。
 
