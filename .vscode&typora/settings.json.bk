@@ -1,0 +1,30 @@
+{
+    //版本更新相关，none表示禁用更新，这三个只能是用户参数在工作区定义无效
+    "update.mode": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.showReleaseNotes": false,
+    //设置新建文件的默认换行符
+    "files.eol": "\n",
+    //图片拷贝到指定目录
+    "markdown.copyFiles.destination": {
+        "**/*": "${documentWorkspaceFolder}/快速笔记/.assets/"
+    },
+    //图片换目录时级联修改引用它的文档
+    "markdown.updateLinksOnFileMove.enabled": "always",
+    //保存时自动删除行尾的空格
+    "files.trimTrailingWhitespace": true,
+    //下面是图床插件的配置
+    "markdown-image.github.token": "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",
+    "markdown-image.github.repository": "https://github.com/PF-Felix/Pic",
+    "markdown-image.github.cdn": "https://cdn.jsdelivr.net/gh/${username}/${repository}@${branch}/${filepath}",
+    "markdown-image.github.branch": "main",
+    "markdown-image.base.fileNameFormat": "${timestamp}",
+    "markdown-image.base.uploadMethod": "GitHub",
+    "markdown-image.base.altFormat": "",
+    //快捷方式插件
+    "workbench.editorAssociations": {
+        "*.lnk": "ink.connector"
+    },
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Visual Studio Dark",
+}

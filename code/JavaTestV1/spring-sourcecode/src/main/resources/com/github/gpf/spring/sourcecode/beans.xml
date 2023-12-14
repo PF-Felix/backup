@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.github.gpf.spring.sourcecode.bean" />
+    <aop:aspectj-autoproxy/>
+
+    <!-- AOP测试 -->
+    <bean id="baby" class="com.github.gpf.spring.sourcecode.bean.aop.Baby" />
+    <bean id="babyAspect" class="com.github.gpf.spring.sourcecode.bean.aop.BabyAspect" />
+    <aop:config>
+        <aop:pointcut id="pointCut" expression="execution(* com.github.gpf.spring.sourcecode.bean.aop.Baby.test(..))"/>
+        <aop:aspect ref="babyAspect">
+            <aop:before method="before" pointcut-ref="pointCut"/>
+            <aop:after method="after" pointcut-ref="pointCut"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="pointCut"/>
+            <aop:around method="around" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="company" class="com.github.gpf.spring.sourcecode.bean.Company">
+        <property name="name" value="甲骨文" />
+        <property name="address" value="美国硅谷" />
+    </bean>
+ </beans>

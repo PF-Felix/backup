@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- factoryBean测试 -->
+    <bean id="car" class="com.github.gpf.spring.sourcecode.bean.factoryBean.CarFactoryBean" >
+        <property name="carInfo"  value="400,2000000" />
+    </bean>
+
+    <!-- lookup-method测试 -->
+    <bean id="tom1" class="com.github.gpf.spring.sourcecode.bean.lookupMethod.Tom" >
+        <property name="dog"  ref="dog" />
+    </bean>
+    <bean id="dog" class="com.github.gpf.spring.sourcecode.bean.lookupMethod.Dog" scope="prototype">
+    </bean>
+    <bean id="tom2" class="com.github.gpf.spring.sourcecode.bean.lookupMethod.Tom" >
+        <lookup-method name="getDog" bean="dog"/>
+    </bean>
+
+    <!-- Supplier测试 -->
+    <bean id="user" class="com.github.gpf.spring.sourcecode.bean.supplier.User">
+    </bean>
+    <bean id="supplierBeanFactoryPostProcessor" class="com.github.gpf.spring.sourcecode.processor.SupplierBeanFactoryPostProcessor">
+    </bean>
+
+    <!-- RootBeanDefinition测试 -->
+    <bean id="son" class="com.github.gpf.spring.sourcecode.bean.rootBeanDefinition.Son" parent="father">
+    </bean>
+    <bean id="father" class="com.github.gpf.spring.sourcecode.bean.rootBeanDefinition.Father">
+        <property name="name" value="bob"/>
+    </bean>
+
+    <!-- factory-method测试 -->
+    <bean id="student" class="com.github.gpf.spring.sourcecode.bean.factoryMethod.StudentFactory" factory-method="newStudent">
+    </bean>
+ </beans>

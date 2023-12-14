@@ -1,0 +1,142 @@
+<mxfile host="Electron" modified="2023-05-04T06:04:22.006Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/20.8.16 Chrome/106.0.5249.199 Electron/21.4.0 Safari/537.36" etag="w4pprfGvjygnY-u4A-4D" compressed="false" version="20.8.16" type="device">
+  <diagram name="第 1 页" id="N5-63youexG4vc5CKdc-">
+    <mxGraphModel dx="1036" dy="611" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ap6LS6vYSskLoCbyO71v-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="ap6LS6vYSskLoCbyO71v-1" target="ap6LS6vYSskLoCbyO71v-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ap6LS6vYSskLoCbyO71v-1" value="main方法启动" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="500" y="80" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="ap6LS6vYSskLoCbyO71v-2" target="WT1dW0S2u5ysk-gjc4fb-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ap6LS6vYSskLoCbyO71v-2" value="SpringApplication#run" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="465" y="264" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ap6LS6vYSskLoCbyO71v-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="ap6LS6vYSskLoCbyO71v-3" target="ap6LS6vYSskLoCbyO71v-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="ap6LS6vYSskLoCbyO71v-3" target="ap6LS6vYSskLoCbyO71v-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ap6LS6vYSskLoCbyO71v-3" value="new SpringApplication" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="468.5" y="176" width="173" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="ap6LS6vYSskLoCbyO71v-4" target="WT1dW0S2u5ysk-gjc4fb-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ap6LS6vYSskLoCbyO71v-4" value="&lt;div&gt;1、配置resourceloader，这里是null&lt;/div&gt;&lt;div&gt;2、设置启动类为资源类&lt;/div&gt;&lt;div&gt;3、判断当前应用程序的类型（servlet、reactive、none）&lt;/div&gt;&lt;div&gt;3、获取启动注册表初始化器（空）【spring.factories】&lt;/div&gt;&lt;div&gt;4、获取上下文初始化器【spring.factories】&lt;/div&gt;&lt;div&gt;5、获取应用监听器【spring.factories】【ApplicationListener】&lt;/div&gt;&lt;div&gt;6、找到当前应用程序的主类&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontFamily=思源宋体 CN;fontSize=14;align=left;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="720" y="117.5" width="451" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-2" value="getSpringFactoriesInstances&lt;br&gt;【spring.factories】" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1208" y="360" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-5" target="WT1dW0S2u5ysk-gjc4fb-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-5" value="创建默认启动上下文对象，内部只有一个事件广播器&lt;br&gt;其他属性都是空的&lt;br&gt;没什么用" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="385" y="325" width="340" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-6" target="WT1dW0S2u5ysk-gjc4fb-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-6" value="配置系统属性java.awt.headless" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="440" y="419" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-7" target="WT1dW0S2u5ysk-gjc4fb-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-7" target="WT1dW0S2u5ysk-gjc4fb-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-7" value="创建SpringApplicationRunListeners对象&lt;br&gt;内部有一个运行监听器数组（SpringApplicationRunListener）&lt;br&gt;数组中只有一个监听器EventPublishingRunListener 也是来自【spring.factories】" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="280" y="479" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-8" target="WT1dW0S2u5ysk-gjc4fb-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-8" value="运行监听器发布应用启动事件ApplicationStartingEvent" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="365" y="569" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-10" target="WT1dW0S2u5ysk-gjc4fb-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-10" value="创建ApplicationArguments对象，解析启动参数" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="390" y="629" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-11" target="WT1dW0S2u5ysk-gjc4fb-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-11" value="配置系统参数spring.beaninfo.ignore" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="425" y="829" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-12" target="WT1dW0S2u5ysk-gjc4fb-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-12" value="输出banner，并创建banner对象" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="440" y="889" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-13" target="WT1dW0S2u5ysk-gjc4fb-30" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=思源宋体 CN;fontSize=25;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-13" target="WT1dW0S2u5ysk-gjc4fb-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-13" value="创建应用上下文对象&lt;br&gt;由【spring.factories】中配置的ApplicationContextFactory对象创建" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="325" y="966" width="461" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-14" target="WT1dW0S2u5ysk-gjc4fb-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-14" target="WT1dW0S2u5ysk-gjc4fb-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-14" value="准备应用的环境&lt;br&gt;由【spring.factories】中配置的ApplicationContextFactory对象创建" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="324" y="689" width="462" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-15" target="WT1dW0S2u5ysk-gjc4fb-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-15" value="运行监听器发布应用环境准备好的事件ApplicationEnvironmentPreparedEvent" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="290" y="769" width="530" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-30" target="WT1dW0S2u5ysk-gjc4fb-32" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-30" target="WT1dW0S2u5ysk-gjc4fb-36" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-30" value="准备应用上下文对象" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="480" y="1116" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-32" value="1、设置应用环境&lt;br&gt;2、遍历各个上下文初始化器初始化上下文对象&lt;br&gt;3、运行监听器发布上下文准备好的事件ApplicationContextInitializedEvent&lt;br&gt;4、注册上面创建的应用参数对象&lt;br&gt;5、注册上面创建的banner对象&lt;br&gt;6、添加一系列BeanFactoryPostProcessor&lt;br&gt;7、创建BeanDefinition加载器&lt;br&gt;8、BeanDefinition加载器注册bean，即咱们的启动类&lt;br&gt;9、运行监听器发布应用准备好的事件ApplicationPreparedEvent" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontFamily=思源宋体 CN;fontSize=14;align=left;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="696" y="1041" width="520" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=思源宋体 CN;fontSize=14;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-36" target="WT1dW0S2u5ysk-gjc4fb-37" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-36" value="上下文刷新：Spring容器初始化" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="445" y="1186" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-37" value="afterRefresh，空方法" style="whiteSpace=wrap;html=1;fontFamily=思源宋体 CN;fontSize=14;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+          <mxGeometry x="475" y="1246" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-40" value="springboot-2.7.10" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontFamily=思源宋体 CN;fontSize=20;fontStyle=1;spacing=6;" parent="1" vertex="1">
+          <mxGeometry width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-42" value="启动流程" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontFamily=思源宋体 CN;fontSize=25;fontStyle=1;spacing=6;" parent="1" vertex="1">
+          <mxGeometry x="75" y="135" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=思源宋体 CN;fontSize=25;fontColor=#000000;" parent="1" source="WT1dW0S2u5ysk-gjc4fb-44" target="WT1dW0S2u5ysk-gjc4fb-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WT1dW0S2u5ysk-gjc4fb-44" value="&lt;b&gt;&lt;font style=&quot;font-size: 25px;&quot;&gt;自动装配&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;启动过程中注册了启动类这个bean&lt;br&gt;在容器初始化过程中的&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;invokeBeanFactoryPostProcessor&lt;/font&gt;&lt;/b&gt;步骤中，会扫描这个类上的@ComponentScan和@Import&lt;br&gt;通过解析&lt;span style=&quot;border-color: var(--border-color);&quot;&gt;@ComponentScan&lt;/span&gt;注解，可以扫描根package&lt;br&gt;通过解析&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font color=&quot;#ff0000&quot; style=&quot;border-color: var(--border-color);&quot;&gt;@Import&lt;/font&gt;&lt;/b&gt;注解，将会实例化下面两个文件中的类，&lt;b&gt;&lt;font color=&quot;#ff0000&quot;&gt;正是在这里实现地自动装配&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; META-INF/spring.factories&lt;br&gt;&amp;nbsp; &amp;nbsp; META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports&lt;br&gt;第三方开发的 starter 可以通过配置这两个文件自动完成bean的实例化&lt;br&gt;&lt;br&gt;PS：&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; color=&quot;#ff0000&quot;&gt;@Import&lt;/font&gt;&lt;/b&gt;注解可以导入第三方配置类、扫描@ComponentScan之外的类&lt;br&gt;&lt;div&gt;1、可以把某个类型的对象注入&lt;/div&gt;&lt;div&gt;2、导入的类型如果实现了 ImportSelector 接口，会将 selectImports 方法返回的类的对象&lt;span style=&quot;background-color: initial;&quot;&gt;注入&lt;/span&gt;&lt;/div&gt;&lt;div&gt;3、如果导入的类型实现了 ImportBeanDefinitionRegistrar 接口，就调用对应的方法显式注册&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontFamily=思源宋体 CN;fontSize=14;align=left;spacing=10;" parent="1" vertex="1">
+          <mxGeometry x="94" y="1417" width="777" height="284" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

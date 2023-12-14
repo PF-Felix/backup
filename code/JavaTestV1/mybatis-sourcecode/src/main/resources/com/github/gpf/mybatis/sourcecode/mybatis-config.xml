@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="com/github/gpf/mybatis/sourcecode/db.properties" />
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+
+        <!-- 控制二级缓存，默认true -->
+        <setting name="cacheEnabled" value="true"/>
+
+        <!-- 对象延迟加载开关，默认false  -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!-- 一级缓存，STATEMENT只针对当前执行的这一statement有效 -->
+        <setting name="localCacheScope" value="STATEMENT"/>
+        <!--<setting name="localCacheScope" value="SESSION"/>-->
+    </settings>
+
+    <typeAliases>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
+
+    <environments default="development">
+        <environment id="development">
+<!--            <transactionManager type="JDBC"/>-->
+            <transactionManager type="MANAGED"/>
+            <!-- 单独使用时配置成MANAGED没有事务 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/github/gpf/mybatis/sourcecode/userDao.xml"/>
+    </mappers>
+
+</configuration>

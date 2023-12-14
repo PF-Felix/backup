@@ -1,0 +1,34 @@
+[
+    {
+        "key": "ctrl+1",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "**${TM_SELECTED_TEXT}**"
+        },
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "~~${TM_SELECTED_TEXT}~~"
+        },
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+3",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "_${TM_SELECTED_TEXT}_"
+        },
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+4",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "snippet": "`${TM_SELECTED_TEXT}`"
+        },
+        "when": "editorTextFocus && !editorReadonly"
+    }
+]
