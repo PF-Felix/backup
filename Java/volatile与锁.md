@@ -18,6 +18,6 @@
 > 偏向锁：如果存在锁竞争，即访问锁和线程指针指向的线程不是同一个，锁标志位变为00（升级为轻量级锁）
 > 轻量级锁：获得轻量级锁的方式是 CAS，如果自旋到了一定次数还拿不到锁，锁标志位变为10（升级为重量级锁）
 
-<img src="C:\ImageA\20231008105906.png" style="zoom:67%;" />
+<img src="C:\backup\assets\20231008105906.png" style="zoom:67%;" />
 
-<img src="C:\ImageA\20231008105918.png" style="zoom:43%;" />
+<img src="C:\backup\assets\20231008105918.png" style="zoom:43%;" />

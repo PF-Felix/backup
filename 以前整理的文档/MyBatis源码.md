@@ -51,7 +51,7 @@ public class MyBatisSourcecodeTest {
 
 ## 时序图
 
-![image-20230317153939334](D:\temporary\image-20230317153939334.png)
+![image-20230317153939334](C:\backup\assets\image-20230317153939334.png)
 
 ## SqlSessionFactory
 
@@ -282,7 +282,7 @@ public Configuration() {
 
 ## 时序图
 
-![image-20230317155820697](D:\temporary\image-20230317155820697.png)
+![image-20230317155820697](C:\backup\assets\image-20230317155820697.png)
 
 ## 读代码
 
@@ -345,7 +345,7 @@ public Executor newExecutor(Transaction transaction, ExecutorType executorType) 
 
 ## 时序图
 
-![image-20230318022152232](D:\temporary\image-20230318022152232.png)
+![image-20230318022152232](C:\backup\assets\image-20230318022152232.png)
 
 ## 读代码
 
@@ -497,7 +497,7 @@ private void cacheElement(XNode context) {
 ```
 
 这里会用到一系列装饰者模式
-![image-20230318034212837](D:\temporary\image-20230318034212837.png)
+![image-20230318034212837](C:\backup\assets\image-20230318034212837.png)
 只有 PerpetualCache 提供了 Cache 接口的基本实现，其他都是装饰者
 
 | 缓存实现类 | 描述 | 作用 | 装饰条件 |

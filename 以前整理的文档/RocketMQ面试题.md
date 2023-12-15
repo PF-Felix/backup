@@ -12,7 +12,7 @@
 
 # 高可用的RocketMQ
 
-![image-20230503045113980](D:\temporary\image-20230503045113980.png)
+![image-20230503045113980](C:\backup\assets\image-20230503045113980.png)
 
 高可用就必须是主从架构
 
@@ -59,4 +59,4 @@
 
 # 事务消息
 
-![image-20230503090835486](D:\temporary\image-20230503090835486.png)
+![image-20230503090835486](C:\backup\assets\image-20230503090835486.png)

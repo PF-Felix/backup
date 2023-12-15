@@ -31,7 +31,7 @@ setnx key value # 同参数nx的作用一样
 
 **setrange**设置指定位置的字符；下标从0开始计算
 
-<img src="C:\ImageA\image-20231020111835871.png" alt="image-20231020111835871" style="zoom: 58%;" />
+<img src="C:\backup\assets\image-20231020111835871.png" alt="image-20231020111835871" style="zoom: 58%;" />
 
 **getrange**截取字符串；需要指明开始和结束的偏移量，截取的范围是个闭区间
 
@@ -136,19 +136,19 @@ count=0：删除所有
 
 **sinterstore/suionstore/sdiffstore**将计算结果保存
 
-<img src="C:\ImageA\image-20231020110627422.png" alt="image-20231020110627422" style="zoom:70%;" />
+<img src="C:\backup\assets\image-20231020110627422.png" alt="image-20231020110627422" style="zoom:70%;" />
 
 **使用场景**标签、给用户贴标签、抽奖活动、随机数
 
 ## 🥈有序集合（ZSET）
 
-<img src="C:\ImageA\image-20231020110728670.png" alt="image-20231020110728670" style="zoom:67%;" />
+<img src="C:\backup\assets\image-20231020110728670.png" alt="image-20231020110728670" style="zoom:67%;" />
 
 有序集合保留了集合不能有重复成员的特性，但可以使用分数排序（分数可以重复）
 
 **zadd**添加成员，返回结果代表成功添加成员的个数
 
-<img src="C:\ImageA\image-20231020110738561.png" alt="image-20231020110738561" style="zoom: 60%;" />
+<img src="C:\backup\assets\image-20231020110738561.png" alt="image-20231020110738561" style="zoom: 60%;" />
 
 > nx: member必须不存在，才可以设置成功，用于添加
 > xx: member必须存在，才可以设置成功，用于更新
@@ -159,23 +159,23 @@ count=0：删除所有
 
 **zscore**计算某个成员的分数，如果成员不存在则返回nil
 
-<img src="C:\ImageA\image-20231020110753417.png" alt="image-20231020110753417" style="zoom:60%;" />
+<img src="C:\backup\assets\image-20231020110753417.png" alt="image-20231020110753417" style="zoom:60%;" />
 
 **zrank**计算成员的排名；分数从低到高，zrevrank反之
 
-<img src="C:\ImageA\image-20231020110827053.png" alt="image-20231020110827053" style="zoom:60%;" />
+<img src="C:\backup\assets\image-20231020110827053.png" alt="image-20231020110827053" style="zoom:60%;" />
 
 **zrem**删除一个或多个成员，返回删除成功的个数
 
 **zincrby**增加成员的分数
 
-<img src="C:\ImageA\image-20231020110838563.png" alt="image-20231020110838563" style="zoom:60%;" />
+<img src="C:\backup\assets\image-20231020110838563.png" alt="image-20231020110838563" style="zoom:60%;" />
 
 **zrange/zrevrange**返回指定排名范围的成员；如果加上 withscores 选项，同时会返回成员的分数
 
-<img src="C:\ImageA\image-20231020110854755.png" alt="image-20231020110854755" style="zoom:60%;" />
+<img src="C:\backup\assets\image-20231020110854755.png" alt="image-20231020110854755" style="zoom:60%;" />
 
-<img src="C:\ImageA\image-20231020110904117.png" alt="image-20231020110904117" style="zoom:60%;" />
+<img src="C:\backup\assets\image-20231020110904117.png" alt="image-20231020110904117" style="zoom:60%;" />
 
 **zrangebyscore**返回指定分数范围的成员
 `zrangebyscore key min max [withscores] [limit offset count]`
@@ -197,9 +197,9 @@ count=0：删除所有
 
 不太好理解，我们用一个例子来说明（算平均分）
 
-<img src="C:\ImageA\image-20231020110920311.png" alt="image-20231020110920311" style="zoom:58%;" />
+<img src="C:\backup\assets\image-20231020110920311.png" alt="image-20231020110920311" style="zoom:58%;" />
 
-<img src="C:\ImageA\image-20231020110930234.png" alt="image-20231020110930234" style="zoom:68%;" />
+<img src="C:\backup\assets\image-20231020110930234.png" alt="image-20231020110930234" style="zoom:68%;" />
 
 **使用场景**
 
@@ -216,7 +216,7 @@ RDB 是将某一时刻内存中的数据生成快照存储到硬盘（全量备�
 - save：在主线程中执行，将导致阻塞
 - bgsave：创建一个子线程，用来备份数据（将内存复制一份用于子进程的备份）
 - 除了上面两种手动触发备份的方式，还可以通过配置自动触发备份，如下图
-  <img src="C:\ImageA\image-20230331184742732.png" alt="image-20230331184742732" style="zoom: 80%;" />
+  <img src="C:\backup\assets\image-20230331184742732.png" alt="image-20230331184742732" style="zoom: 80%;" />
 
 执行 shutdown 命令时如果没有开启 AOF 将触发 bgsave
 
@@ -305,7 +305,7 @@ AOF 重写时，如果有写入操作，这个操作会被写到重写日志的�
 因此使用 LRU 或 LFU 算法保证热点 key 不失效即可，非热点 key 失效了也没关系
 
 ~~过期式清理~~加互斥锁，伪代码如下图（而且互斥锁方案还可以为数据阈值式清理兜底）
-<img src="C:\ImageA\image-20230331191804005.png" alt="image-20230331191804005" style="zoom: 67%;" />
+<img src="C:\backup\assets\image-20230331191804005.png" alt="image-20230331191804005" style="zoom: 67%;" />
 
 **雪崩**大量缓存同时失效，数据库压力暴增，即为雪崩
 

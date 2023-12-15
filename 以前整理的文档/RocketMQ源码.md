@@ -2,15 +2,15 @@
 
 ## 消息模型
 
-![](D:\temporary\ebcf3458d04b36f47f4c9633c1e36bf7.png)
+![](C:\backup\assets\ebcf3458d04b36f47f4c9633c1e36bf7.png)
 
 ## 架构模型
 
-![](D:\temporary\ee0435f80da5faecf47bca69b1c831cb.png)
+![](C:\backup\assets\ee0435f80da5faecf47bca69b1c831cb.png)
 
 ## 核心组件
 
-![image-20230428222615589](D:\temporary\image-20230428222615589.png)
+![image-20230428222615589](C:\backup\assets\image-20230428222615589.png)
 
 ==NameServer==
 命名服务，注册中心
@@ -39,7 +39,7 @@
 
 ## 启动流程
 
-![image-20230429003406257](D:\temporary\image-20230429003406257.png)
+![image-20230429003406257](C:\backup\assets\image-20230429003406257.png)
 
 ==NamesrvStartup.java==
 
@@ -71,10 +71,10 @@ public static NamesrvController main0(String[] args) {
 ## 源码分析亮点：读锁&写锁提高并发性能
 
 参考《核心组件》
-![image-20230429012743520](D:\temporary\image-20230429012743520.png)
+![image-20230429012743520](C:\backup\assets\image-20230429012743520.png)
 
 关键类：RouteInfoManager
-![image-20230429013227751](D:\temporary\image-20230429013227751.png)
+![image-20230429013227751](C:\backup\assets\image-20230429013227751.png)
 
 对于 NameServer
 1、生产者和消费者会频繁读
@@ -92,13 +92,13 @@ NS 是无状态的
 1、基于内存的，不持久化数据（如下图）
 2、NameServer 集群中它们相互之间不通讯，无依赖关系，设计简单，代码轻量
 
-![image-20230429013421860](D:\temporary\image-20230429013421860.png)
+![image-20230429013421860](C:\backup\assets\image-20230429013421860.png)
 
 # Broker
 
 ## 启动流程
 
-![image-20230429115134381](D:\temporary\image-20230429115134381.png)
+![image-20230429115134381](C:\backup\assets\image-20230429115134381.png)
 
 ==BrokerStartup.java==
 
@@ -138,7 +138,7 @@ RocketMQ 主要存储的文件包括 CommitLog、ConsumeQueue、 IndexFile、JSO
 ### CommitLog
 
 ==落盘文件如下==
-![image-20230430142010915](D:\temporary\image-20230430142010915.png)
+![image-20230430142010915](C:\backup\assets\image-20230430142010915.png)
 
 所有主题的消息都存在 CommitLog 中，生产消息发送时==顺序写==文件，尽最大的能力确保消息发送的高性能与高吞吐量
 ==但顺序写使读数据变得困难==
@@ -149,8 +149,8 @@ MMAP 技术在地址映射的过程中对文件的大小是有限制的，在1.5
 ### ConsumeQueue
 
 ==落盘文件如下==
-![image-20230430142039189](D:\temporary\image-20230430142039189.png)
-![image-20230430142057357](D:\temporary\image-20230430142057357.png)
+![image-20230430142039189](C:\backup\assets\image-20230430142039189.png)
+![image-20230430142057357](C:\backup\assets\image-20230430142057357.png)
 
 为了提升消息消费效率（我得知道msg内容，因此得查 CommitLog 文件），引入了 ConsumeQueue 作为 CommitLog 的索引
 每个主题包含多个消息消费队列，每个消息队列对应一个 ConsumeQueue
@@ -160,17 +160,17 @@ MMAP 技术在地址映射的过程中对文件的大小是有限制的，在1.5
 根据主题和消费队列ID，得到这个 ConsunmeQueue
 根据消费队列的消息序号，计算出索引的位置（比如序号2，就知道偏移量是20），然后直接读取这条索引，再根据索引中记录的消息的全局位置，找到消息
 
-![image-20230501020344180](D:\temporary\image-20230501020344180.png)
+![image-20230501020344180](C:\backup\assets\image-20230501020344180.png)
 
 ### IndexFile
 
 ==数据结构==
 
-![image-20230501024954536](D:\temporary\image-20230501024954536.png)
+![image-20230501024954536](C:\backup\assets\image-20230501024954536.png)
 
 ==落盘文件==
 
-![image-20230430142114989](D:\temporary\image-20230430142114989.png)
+![image-20230430142114989](C:\backup\assets\image-20230430142114989.png)
 
 ==IndexFile 的存储内容是什么==
 hash槽存储的是索引位置
@@ -197,7 +197,7 @@ config 文件夹中存储着 Topic 和 Consumer 等相关信息
 - consumerOffset.json：集群消费模式消息消费进度
 - consumerFilter.json：主题消息过滤信息
 
-![image-20230430142132380](D:\temporary\image-20230430142132380.png)
+![image-20230430142132380](C:\backup\assets\image-20230430142132380.png)
 
 ### CommitLog、ConsumeQueue的一致性
 
@@ -363,9 +363,9 @@ public synchronized void start() throws MQClientException {}
 
 上述过程是推模式
 
-![image-20230502191051333](D:\temporary\image-20230502191051333.png)
+![image-20230502191051333](C:\backup\assets\image-20230502191051333.png)
 
-![image-20230502171805054](D:\temporary\image-20230502171805054.png)
+![image-20230502171805054](C:\backup\assets\image-20230502171805054.png)
 
 ## 消费卡死（顺序消息）
 

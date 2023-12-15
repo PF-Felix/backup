@@ -15,6 +15,6 @@ GET 请求用于查询数据，通常是在 URL 中传递参数
 
 现实情况是很多查询需要传递很多参数，URL 传参不现实，而且有些前端框架本身不支持 GET 通过请求体传参，此时可以使用 POST 来代替
 
-<img src="C:\ImageA\20231008103716.png" style="zoom:56%;" />
+<img src="C:\backup\assets\20231008103716.png" style="zoom:56%;" />
 
-<img src="C:\ImageA\20231008103751.png" style="zoom:56%;" />
+<img src="C:\backup\assets\20231008103751.png" style="zoom:56%;" />

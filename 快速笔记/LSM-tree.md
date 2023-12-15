@@ -48,12 +48,12 @@ log-structured merge-tree 日志结构合并树
 
 能让我们顺序写磁盘，从而大幅提升写的性能。
 
-<img src="D:\Felix\快速笔记\assets\image-20230914221059973.png" alt="image-20230914221059973" style="zoom:50%;" />
+<img src="C:\backup\assets\image-20230914221059973.png" alt="image-20230914221059973" style="zoom:50%;" />
 
-<img src="D:\Felix\快速笔记\assets\image-20230914221131474.png" alt="image-20230914221131474" style="zoom:33%;" />
+<img src="C:\backup\assets\image-20230914221131474.png" alt="image-20230914221131474" style="zoom:33%;" />
 
-<img src="D:\Felix\快速笔记\assets\image-20230919162852659.png" alt="image-20230919162852659" style="zoom:50%;" />
+<img src="C:\backup\assets\image-20230919162852659.png" alt="image-20230919162852659" style="zoom:50%;" />
 
-<img src="D:\Felix\快速笔记\assets\image-20230914222345618.png" alt="image-20230914222345618" style="zoom:50%;" />
+<img src="C:\backup\assets\image-20230914222345618.png" alt="image-20230914222345618" style="zoom:50%;" />
 
-<img src="D:\Felix\快速笔记\assets\image-20230914222659394.png" alt="image-20230914222659394" style="zoom:33%;" />
+<img src="C:\backup\assets\image-20230914222659394.png" alt="image-20230914222659394" style="zoom:33%;" />

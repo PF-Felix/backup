@@ -128,7 +128,7 @@
 
 因此，1000QPS 能够满足一些中等规模的应用需求，但对于一些大型应用来说，可能需要更高的QPS
 
-<img src="C:\ImageA\image-20231007093736903.png" alt="image-20231007093736903" style="zoom:70%;" />
+<img src="C:\backup\assets\image-20231007093736903.png" alt="image-20231007093736903" style="zoom:70%;" />
 
 ~~2C4G能支持多少QPS~~
 
@@ -136,7 +136,7 @@
 
 ~~QPS如何估算~~
 
-<img src="C:\ImageA\image-20231007093859435.png" alt="image-20231007093859435" style="zoom:80%;" />
+<img src="C:\backup\assets\image-20231007093859435.png" alt="image-20231007093859435" style="zoom:80%;" />
 
 ## 🥈项目人员+开发周期
 
@@ -158,15 +158,15 @@
 
 **商品中心**
 
-<img src="C:\ImageA\image-20231014083636831.png" style="zoom:36%;" />
+<img src="C:\backup\assets\image-20231014083636831.png" style="zoom:36%;" />
 
 **库存管理**
 
-<img src="C:\ImageA\image-20231018141744522.png" alt="image-20231018141744522" style="zoom: 40%;" />
+<img src="C:\backup\assets\image-20231018141744522.png" alt="image-20231018141744522" style="zoom: 40%;" />
 
 **促销中心**
 
-<img src="C:\ImageA\image-20231018141834039.png" alt="image-20231018141834039" style="zoom:40%;" />
+<img src="C:\backup\assets\image-20231018141834039.png" alt="image-20231018141834039" style="zoom:40%;" />
 
 # 🧔用户中心
 
@@ -326,7 +326,7 @@
 
 京东举例如下图：
 
-<img src="C:\ImageA\1685173735566-d482242a-9df5-4d61-90c2-3c2f9dcd5fb1.png" alt="image.png" style="zoom:67%;" />
+<img src="C:\backup\assets\1685173735566-d482242a-9df5-4d61-90c2-3c2f9dcd5fb1.png" alt="image.png" style="zoom:67%;" />
 
 **SKU**
 
@@ -334,7 +334,7 @@
 
 还是用京东举例：
 
-<img src="C:\ImageA\1685185379448-567e5d37-bfe1-4236-9f7d-7d4ac01f1c3c.png" alt="image.png" style="zoom:67%;" />
+<img src="C:\backup\assets\1685185379448-567e5d37-bfe1-4236-9f7d-7d4ac01f1c3c.png" alt="image.png" style="zoom:67%;" />
 
 **基本属性&销售属性**
 
@@ -346,7 +346,7 @@
 PS：这个项目没有用到属性组
 属性组需要和基本属性关联
 
-<img src="C:\ImageA\1683840607170-f668d3bb-61a1-4a2e-8d8b-e4f81ebeb120.png" alt="img" style="zoom: 96%;" />
+<img src="C:\backup\assets\1683840607170-f668d3bb-61a1-4a2e-8d8b-e4f81ebeb120.png" alt="img" style="zoom: 96%;" />
 
 ## 🥈商品详情
 
@@ -375,15 +375,15 @@ PS：根据 SPU_ID 查询商品详情使用**异步**加速查询
 
 ### 🥉发布
 
-<img src="C:\ImageA\1685184818313-197486aa-8ccc-4de0-9357-649d438db7e9.png" alt="image.png" style="zoom: 67%;" />
+<img src="C:\backup\assets\1685184818313-197486aa-8ccc-4de0-9357-649d438db7e9.png" alt="image.png" style="zoom: 67%;" />
 
 根据【商品分类ID】查询所有的【基本属性】
 
-![image.png](C:\ImageA\1685160890476-7aca726a-53ef-4df7-a350-bc404b6ecf7e.png)
+![image.png](C:\backup\assets\1685160890476-7aca726a-53ef-4df7-a350-bc404b6ecf7e.png)
 
 根据【商品分类ID】查询所有的【销售属性】
 
-<img src="C:\ImageA\1685161310553-ee232b5d-c9fa-4377-8c03-10c73997d071.png" alt="image.png" style="zoom:77%;" />
+<img src="C:\backup\assets\1685161310553-ee232b5d-c9fa-4377-8c03-10c73997d071.png" alt="image.png" style="zoom:77%;" />
 
 最后保存：
 1. 保存 SPU 基本信息、详细信息、图集
@@ -415,7 +415,7 @@ PS：根据 SPU_ID 查询商品详情使用**异步**加速查询
 - 销量
 - 商品所有属性ID列表（包括基本属性和销售属性）
 
-<img src="C:\ImageA\image-20231018105059442.png" alt="image-20231018105059442" style="zoom: 43%;" />
+<img src="C:\backup\assets\image-20231018105059442.png" alt="image-20231018105059442" style="zoom: 43%;" />
 
 ### 🥉分页列表的展示顺序
 
@@ -602,7 +602,7 @@ No，加入购物车必须登录
 
 即便设置了多次重试依然可能失败
 
-<img src="C:\ImageA\1684476581082-0b49bb0b-cd36-4750-a5f2-f1a1d475e964.png" alt="img" style="zoom: 80%;" />
+<img src="C:\backup\assets\1684476581082-0b49bb0b-cd36-4750-a5f2-f1a1d475e964.png" alt="img" style="zoom: 80%;" />
 
 最终还是发送失败？相当于下单失败了，需要恢复库存
 
@@ -614,7 +614,7 @@ No，加入购物车必须登录
 
 消费者需要做幂等处理
 
-<img src="C:\ImageA\1684477331236-0007bb36-dcff-4b20-93f6-91fc55698f9c.png" alt="img" style="zoom: 80%;" />
+<img src="C:\backup\assets\1684477331236-0007bb36-dcff-4b20-93f6-91fc55698f9c.png" alt="img" style="zoom: 80%;" />
 
 ## 🥈超卖和少买的问题
 
@@ -642,7 +642,7 @@ No，加入购物车必须登录
   - 抢光了：不让点了
   - 还有：开红包，更新红包记录
 
-<img src="C:\ImageA\1684390210315-30e2f5f1-706c-441d-bae4-c039372bbcfd.png" alt="img" style="zoom: 80%;" />
+<img src="C:\backup\assets\1684390210315-30e2f5f1-706c-441d-bae4-c039372bbcfd.png" alt="img" style="zoom: 80%;" />
 
 **数据库表的设计**
 
@@ -717,7 +717,7 @@ No，加入购物车必须登录
 
 前端在上传图片到阿里云之前，调用这个接口获得上传所需的防伪签名，然后直接调用阿里云OSS的接口上传图片和防伪签名
 
-![image-20231014084619324](C:\ImageA\image-20231014084619324.png)
+![image-20231014084619324](C:\backup\assets\image-20231014084619324.png)
 
 ## 🥈物流能力的接入
 
@@ -725,8 +725,8 @@ No，加入购物车必须登录
 
 统一支付宝和微信的 API
 
-<img src="C:\ImageA\image-20231014084426428.png" alt="image-20231014084426428" style="zoom:67%;" />
+<img src="C:\backup\assets\image-20231014084426428.png" alt="image-20231014084426428" style="zoom:67%;" />
 
-<img src="C:\ImageA\image-20231014084511315.png" alt="image-20231014084511315" style="zoom:67%;" />
+<img src="C:\backup\assets\image-20231014084511315.png" alt="image-20231014084511315" style="zoom:67%;" />
 
-<img src="C:\ImageA\image-20231014084548458.png" alt="image-20231014084548458" style="zoom:67%;" />
+<img src="C:\backup\assets\image-20231014084548458.png" alt="image-20231014084548458" style="zoom:67%;" />

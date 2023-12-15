@@ -12,7 +12,7 @@ mysql -h localhost -u root -p123456
 
 其实不论客户端进程和服务器进程是采用哪种方式进行通信，最后实现的效果都是：客户端进程向服务器进程发 送一段文本（MySQL语句），服务器进程处理后再向客户端进程发送一段文本（处理结果）。
 
-<img src="D:\FigureBed\image-20230904142013531.png" alt="image-20230904142013531" style="zoom: 33%;" />
+<img src="C:\backup\assets\image-20230904142013531.png" alt="image-20230904142013531" style="zoom: 33%;" />
 
 连接管理：每当有一个客户端进程连接到服务器进程时，服务器进程都会创建一个线程来专门处理与这个 客户端的交互，当该客户端退出时会与服务器断开连接，服务器并不会立即把与该客户端交互的线程销毁掉，而 是把它缓存起来，在另一个新的客户端再进行连接时，把这个缓存的线程分配给该新客户端。这样就起到了不频 繁创建和销毁线程的效果，从而节省开销。从这一点大家也能看出， MySQL 服务器会为每一个连接进来的客户端 分配一个线程，但是线程分配的太多了会严重影响系统性能，所以我们也需要限制一下可以同时连接到服务器的 客户端数量，至于怎么限制我们后边再说哈～ **连接池**
 
@@ -38,7 +38,7 @@ mysql -h localhost -u root -p123456
 
 负责管理数据
 
-<img src="D:\FigureBed\image-20230904143042215.png" alt="image-20230904143042215" style="zoom:35%;" />
+<img src="C:\backup\assets\image-20230904143042215.png" alt="image-20230904143042215" style="zoom:35%;" />
 
 我们之前创建表的语句都没有指定表的存储引擎，那就会使用默认的存储引擎 InnoDB （当然这个默认的存储引 擎也是可以修改的，我们在后边的章节中再说怎么改）。如果我们想显式的指定一下表的存储引擎，那可以这么 写：
 
@@ -69,11 +69,11 @@ ALTER TABLE `script` ENGINE = MyISAM;
 
 于是有了配置文件的概念，把需要设置的启动选项都写在这个配置文件中，每次启动服务器的时候都从 这个文件里加载相应的启动选项。推荐使用
 
-<img src="D:\FigureBed\image-20230904144124263.png" alt="image-20230904144124263" style="zoom:38%;" />
+<img src="C:\backup\assets\image-20230904144124263.png" alt="image-20230904144124263" style="zoom:38%;" />
 
-<img src="D:\FigureBed\image-20230904144250620.png" alt="image-20230904144250620" style="zoom:40%;" />
+<img src="C:\backup\assets\image-20230904144250620.png" alt="image-20230904144250620" style="zoom:40%;" />
 
-<img src="D:\FigureBed\image-20230904144706450.png" alt="image-20230904144706450" style="zoom:50%;" />
+<img src="C:\backup\assets\image-20230904144706450.png" alt="image-20230904144706450" style="zoom:50%;" />
 
 优先级：MySQL 将按照我们在上表中给定的顺序依次读取各个配置文件，如 果该文件不存在则忽略。值得注意的是，如果我们在多个配置文件中设置了相同的启动选项，那以最后一个配置 文件中的为准
 
@@ -103,8 +103,8 @@ SHOW VARIABLES LIKE 'default%';
 
 很显然，通过启动选项设置的系统变量的作用范围都是 GLOBAL 的，也就是对所有客户端都有效的
 
-<img src="D:\FigureBed\image-20230904150516345.png" alt="image-20230904150516345" style="zoom:33%;" />
+<img src="C:\backup\assets\image-20230904150516345.png" alt="image-20230904150516345" style="zoom:33%;" />
 
-<img src="D:\FigureBed\image-20230904150542032.png" alt="image-20230904150542032" style="zoom:33%;" />
+<img src="C:\backup\assets\image-20230904150542032.png" alt="image-20230904150542032" style="zoom:33%;" />
 
 而上面 SHOW VARIABLES 查看的是 session 范围的变量
