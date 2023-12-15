@@ -80,32 +80,6 @@
 考虑过写的内容有：编程笔记、软件工具推荐、好物推荐、昨夜今晨新闻
 但写文还是需要花费大量时间，而且这不是自己擅长的，有这些时间还不如多钻研编程
 
-# C++
-
-[Learn C++ – Skill up with our free tutorials (learncpp.com)](https://www.learncpp.com/)
-
-# 算法
-
-[怎么刷算法，leetcode上有哪些经典题目? - 知乎 (zhihu.com)](https://www.zhihu.com/question/502471127/answer/2478652654)
-
-[怎么刷算法，leetcode上有哪些经典题目? - 知乎 (zhihu.com)](https://www.zhihu.com/question/502471127/answer/2639174632)
-
-[怎么刷算法，leetcode上有哪些经典题目? - 知乎 (zhihu.com)](https://www.zhihu.com/question/502471127/answer/2268431201)
-
-[回溯算法DFS && BFS算法 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623213529)
-
-[数据结构-树及相关算法 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/623830678)
-
-[Hello 算法](https://m.okjike.com/originalPosts/65001abbc70326f2eb4bb80a?s=eyJ1IjoiNjQ5NjAxNzE0YmQ2NjJlODZhODgyZjgyIiwiZCI6MX0%3D)
-
-# Python
-
-[AI技术分享的动态-哔哩哔哩 (bilibili.com)](https://t.bilibili.com/827445039187623941)
-
-# 收藏文章
-
-[阿里云做图床详细流程](https://blog.csdn.net/cl939974883/article/details/127173891)
-
 # ⭐收藏
 
 ## 🥈Typora
