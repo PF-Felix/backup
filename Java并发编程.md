@@ -301,12 +301,6 @@ signal：
 
 ## 阻塞队列
 
-
-
-
-
-
-
 ## newScheduledThreadPool
 
 ```java
